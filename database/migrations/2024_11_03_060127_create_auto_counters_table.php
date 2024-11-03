@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('counter_key')->unique();
             $table->integer('total_duration')->default(4);
             $table->integer('total_count')->default(50);
-            $table->integer('count_start')->default(0);
+            $table->integer('current_count')->default(0);
             $table->string('before')->nullable();
             $table->string('after')->nullable();
             $table->enum('action', ['increment', 'decrement'])->default('increment');

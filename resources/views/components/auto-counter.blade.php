@@ -1,37 +1,48 @@
 <div class="container">
-    <div class="counter" id="counterContainer">
-        <h1 id="counterValue">{{ $data->before }} 0 {{ $data->after }}</h1>
+    <div class="counter" id="counterContainer{{ $data->id }}"
+         data-total-duration="{{ $data->total_duration * 1000 }}"
+         data-total-count="{{ $data->total_count }}"
+         data-action="{{ $data->action }}"
+         data-current-count="{{ $data->current_count }}">
+        <h1 id="counterValue{{ $data->id }}">{{ $data->before }} 0 {{ $data->after }}</h1>
     </div>
 </div>
+
 <script>
-    const totalDuration = {{ $data->total_duration * 1000 }};
-    const totalCount = {{ $data->total_count }};
-    const incrementDuration = totalDuration / totalCount;
-    const action = "{{ $data->action }}";
-    const dbCurrentTime = {{ $data->count_start }};
+    (function() {
+        const counterElements = document.querySelectorAll('[id^="counterContainer"]'); // All counters
 
-    // Initialize currentCount based on action
-    let currentCount = action === 'increment' ? dbCurrentTime : totalCount;
-    let countingStarted = false;
+        counterElements.forEach(counterElement => {
+            const totalDuration = parseInt(counterElement.getAttribute('data-total-duration'));
+            const totalCount = parseInt(counterElement.getAttribute('data-total-count'));
+            const action = counterElement.getAttribute('data-action');
+            const dbCurrentTime = parseInt(counterElement.getAttribute('data-current-count'));
+            const counterValueElement = counterElement.querySelector('h1');
 
-    function updateCounter() {
-        if ((action === 'increment' && currentCount < totalCount) ||
-            (action === 'decrement' && currentCount > dbCurrentTime)) {
-            currentCount = action === 'increment' ? currentCount + 1 : currentCount - 1;
-            document.getElementById('counterValue').innerText =
-                `{{ $data->before }} ${currentCount} {{ $data->after }}`;
-            setTimeout(updateCounter, incrementDuration);
-        }
-    }
+            const incrementDuration = totalDuration / totalCount;
+            let currentCount = action === 'increment' ? dbCurrentTime : totalCount;
+            let countingStarted = false;
 
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !countingStarted) {
-                countingStarted = true;
-                updateCounter();
+            function updateCounter() {
+                if ((action === 'increment' && currentCount < totalCount) ||
+                    (action === 'decrement' && currentCount > dbCurrentTime)) {
+                    currentCount = action === 'increment' ? currentCount + 1 : currentCount - 1;
+                    counterValueElement.innerText =
+                        `{{ $data->before }} ${currentCount} {{ $data->after }}`;
+                    setTimeout(updateCounter, incrementDuration);
+                }
             }
-        });
-    });
 
-    observer.observe(document.getElementById('counterContainer'));
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !countingStarted) {
+                        countingStarted = true;
+                        updateCounter();
+                    }
+                });
+            });
+
+            observer.observe(counterElement);
+        });
+    })();
 </script>

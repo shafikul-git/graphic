@@ -21,7 +21,7 @@ class AutoCounterFactory extends Factory
          'counter_key' => 'counter_' . self::$counterKey++,
          'total_duration' => 6,
          'total_count' => 120,
-         'count_start' => 0,
+         'current_count' => 0,
          'before' => '',
          'after' => '+',
          'action' => 'increment',
