@@ -4,7 +4,7 @@
 <style>
     .HeroSlider {
         position: relative;
-        height: 100%;
+        /* height: 100%; */
     }
 
     .swiper {

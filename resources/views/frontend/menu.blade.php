@@ -1,12 +1,4 @@
 <header class="header w-full">
-    <!--! topHeader -->
-    <x-frontend.topheader />
-    <!--? navbar -->
-
-
-
-
-
 
     <header class='flex border-b bg-white font-sans min-h-[70px] tracking-wide relative z-50'>
         <div class='flex flex-wrap items-center justify-between px-10 py-3 gap-4 w-full'>
