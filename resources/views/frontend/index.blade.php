@@ -7,11 +7,17 @@
 
 {{-- <x-before-after beforeAfterKey="before_after_1"/> --}}
 
-<div class="md:mx-[2rem] lg:mx-[5rem] xl:mx-[7rem] mx-[0.2rem]">
+<div class="md:mx-[1rem] lg:mx-[3rem] xl:mx-[5rem] mx-[0.2rem]">
     @include('frontend.valuePropositions')
 
     @include('frontend.serviceOverView')
 
     @include('frontend.editingProces')
+
+    @include('frontend.whyOutsourceing')
+
+    @include('frontend.categorys')
+
+    @include('frontend.FAQ')
 </div>
 </x-GuestLayout>

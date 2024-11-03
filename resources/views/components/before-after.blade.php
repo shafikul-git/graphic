@@ -27,13 +27,13 @@
       right: 12px;
     }
   </style>
-  <img-comparison-slider>
+  <img-comparison-slider class="focus:border-none rounded-md shadow-lg shadow-indigo-400 outline-none">
     <figure slot="first" class="before">
-        <img slot="first" src="{{ $images->first_image }}" />
+        <img slot="first" src="{{ $images->first_image }}" loding="lazy"/>
       <figcaption>Before</figcaption>
     </figure>
     <figure slot="second" class="after">
-        <img slot="second" src="{{ $images->second_image }}" />
+        <img slot="second" src="{{ $images->second_image }}" loding="lazy"/>
       <figcaption>After</figcaption>
     </figure>
   </img-comparison-slider>
