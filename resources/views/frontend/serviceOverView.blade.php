@@ -1,4 +1,4 @@
-<div class=" grid grid-cols-1 md:grid-cols-3 space-x-12 mx-[10rem] my-9 ">
+<div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-x-12  my-9 ">
     <x-card heading="Edited by hand" description="Every edit is done by a professional retoucher, not a machine, for complete control and the cleanest edges" image="https://pathedits.com/cdn/shop/t/4/assets/editor.svg?v=26141043621473276621644625039" />
     <x-card heading="Pixel perfect results" description="Our designers can handle even the most complex cutouts — no straight polygonal lasso lines where they shouldn’t be" image="https://pathedits.com/cdn/shop/t/4/assets/researcher.svg?v=59901416171291178341628203592" />
     <x-card heading="24/7 support" description="Your dedicated customer support team is ready to help, whenever you need us" image="https://pathedits.com/cdn/shop/t/4/assets/support.svg?v=87261008439843221191644625038" />
