@@ -15,6 +15,10 @@
     <!--* favicon -->
     <link rel="shortcut icon" href="{{ url('frontend/index/images/logo/favicon.ico') }}" type="image/x-icon" />
     <!--! css link -->
+    <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" />
+
+    @stack('heads')
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
     <script>
         tailwind.config = {
@@ -44,6 +48,7 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js') }}"></script>
 
+    @stack('scripts')
 </body>
 
 </html>

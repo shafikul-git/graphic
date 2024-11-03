@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\AutoCounter;
+use App\Models\BeforeAfter;
 use App\Models\frontend\HeroSlider;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -21,6 +22,9 @@ class DatabaseSeeder extends Seeder
 
 
         AutoCounter::factory(10)->create();
+
+
+        BeforeAfter::factory(20)->create();
 
 
         // User::factory()->create([
