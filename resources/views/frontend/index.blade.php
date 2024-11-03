@@ -3,4 +3,6 @@
 
 <x-hero-slider/>
 
+@include('frontend.valuePropositions')
+
 </x-GuestLayout>

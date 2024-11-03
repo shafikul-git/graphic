@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\AutoCounter;
 use App\Models\frontend\HeroSlider;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -17,6 +18,11 @@ class DatabaseSeeder extends Seeder
         User::factory(20)->create();
 
         HeroSlider::factory(10)->create();
+
+
+        AutoCounter::factory(10)->create();
+
+
         // User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
