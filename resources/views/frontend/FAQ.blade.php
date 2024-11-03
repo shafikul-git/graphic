@@ -35,33 +35,14 @@
                 </div>
             </div>
 
-            {{-- <div role="accordion" class="shadow-sm shadow-gray-400 rounded-md px-4 my-3 hover:bg-gray-100 transition-all duration-500">
-                <button type="button"
-                    class="w-full text-base text-left font-semibold py-6 text-gray-800 flex items-center">
-                    <span class="mr-4">What are the dates and locations for the product launch events?</span>
-                    <ion-icon name="add" class="w-6 h-6 ml-auto "></ion-icon>
-                </button>
-                <div class="hidden py-4">
-                    <p class="text-sm text-gray-800">Content</p>
-                </div>
-            </div>
-            <div role="accordion" class="shadow-sm shadow-gray-400 rounded-md px-4 my-3 hover:bg-gray-100 transition-all duration-500">
-                <button type="button"
-                    class="w-full text-base text-left font-semibold py-6 text-gray-800 flex items-center">
-                    <span class="mr-4">What are the dates and locations for the product launch events?</span>
-                    <ion-icon name="add" class="w-6 h-6 ml-auto "></ion-icon>
-                </button>
-                <div class="hidden py-4">
-                    <p class="text-sm text-gray-800">Content</p>
-                </div>
-            </div> --}}
 
         </div>
     </div>
 
     <div class="col-span-2 flex justify-center items-center">
         <div class="">
-            <img id="accordionImage" src="https://clippingpathstudio.com/wp-content/uploads/2022/08/photo-retouching-after-6-400x284.jpg" alt="">
+            <img id="accordionImage" src="https://clippingpathstudio.com/wp-content/uploads/2022/08/photo-retouching-after-6-400x284.jpg" alt="" onload="this.style.opacity = 1; this.style.transform = 'translateY(0)';">
+
         </div>
     </div>
 </div>
@@ -85,17 +66,26 @@
             content.classList.remove('open');
             button.querySelector('.icon-toggle').name = 'add';
         } else {
-            content.style.maxHeight = content.scrollHeight + "px"; // Smooth transition height
+            content.style.maxHeight = content.scrollHeight + "px";
             content.classList.add('open');
             button.querySelector('.icon-toggle').name = 'remove';
         }
 
-        // Smoothly change the image
         const image = document.getElementById('accordionImage');
-        image.style.opacity = 0; // Make the image transparent first
-        setTimeout(() => {
-            image.src = imageUrl; // Change the image source
-            image.style.opacity = 1; // Fade the image back in
-        }, 500); // Delay to match the transition duration
+    image.style.opacity = 0;
+    image.style.transform = 'translateY(-20px)';
+    setTimeout(() => {
+        image.src = imageUrl;
+        image.style.opacity = 1;
+        image.style.transform = 'translateY(0)';
+    }, 500);
     }
 </script>
+<style>
+    #accordionImage {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+</style>
