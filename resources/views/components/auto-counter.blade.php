@@ -1,4 +1,3 @@
-{{ $data }}
 <div class="container">
     <div class="counter" id="counterContainer">
         <h1 id="counterValue">{{ $data->before }} 0 {{ $data->after }}</h1>
@@ -11,11 +10,13 @@
     const action = "{{ $data->action }}";
     const dbCurrentTime = {{ $data->count_start }};
 
+    // Initialize currentCount based on action
     let currentCount = action === 'increment' ? dbCurrentTime : totalCount;
     let countingStarted = false;
 
     function updateCounter() {
-        if ((action === 'increment' && currentCount < totalCount) || (action === 'decrement' && currentCount > 0)) {
+        if ((action === 'increment' && currentCount < totalCount) ||
+            (action === 'decrement' && currentCount > dbCurrentTime)) {
             currentCount = action === 'increment' ? currentCount + 1 : currentCount - 1;
             document.getElementById('counterValue').innerText =
                 `{{ $data->before }} ${currentCount} {{ $data->after }}`;
