@@ -12,7 +12,7 @@
             <!-- Accordion Item 2 -->
             <div role="accordion" class="accordion bg-white shadow-md shadow-gray-400 px-4 rounded-md my-3 hover:bg-gray-100 transition-all duration-500">
                 <button type="button" class="accordion-button w-full text-base text-left font-semibold py-6 text-gray-800 flex items-center"
-                    onclick="toggleAccordion(this, '{{ url('frontend/assets/images/contact-bg.jpeg') }}')">
+                    onclick="toggleAccordion(this, '{{ url('frontend/image/jewelry/2/after.png') }}')">
                     <span class="mr-4">What are the dates and locations for the product launch events?</span>
                     <ion-icon name="add" class="w-6 h-6 ml-auto icon-toggle"></ion-icon>
                 </button>
@@ -26,7 +26,7 @@
             <!-- Accordion Item 2 -->
             <div role="accordion" class="accordion bg-white shadow-md shadow-gray-400 px-4 rounded-md my-3 hover:bg-gray-100 transition-all duration-500">
                 <button type="button" class="accordion-button w-full text-base text-left font-semibold py-6 text-gray-800 flex items-center"
-                    onclick="toggleAccordion(this, '{{ url('frontend/assets/images/bedroom.png') }}')">
+                    onclick="toggleAccordion(this, '{{ url('frontend/image/jewelry/3/after.png') }}')">
                     <span class="mr-4">What are the dates and locations for the product launch events?</span>
                     <ion-icon name="add" class="w-6 h-6 ml-auto icon-toggle"></ion-icon>
                 </button>
@@ -41,7 +41,7 @@
 
     <div class="col-span-2 flex justify-center items-center">
         <div class="">
-            <img id="accordionImage" src="https://clippingpathstudio.com/wp-content/uploads/2022/08/photo-retouching-after-6-400x284.jpg" alt="" onload="this.style.opacity = 1; this.style.transform = 'translateY(0)';">
+            <img id="accordionImage" src="{{ url('frontend/image/jewelry/1/after.png') }}" alt="" onload="this.style.opacity = 1; this.style.transform = 'translateY(0)';">
 
         </div>
     </div>
