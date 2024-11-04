@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServicePageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\layouts\Blank;
 use App\Http\Controllers\layouts\Fluid;
@@ -50,13 +51,9 @@ Route::get('/', function () {
     return view('frontend.index');
 })->name('home');
 
-Route::get('shop', function () {
-    return view('frontend.shop');
-})->name('shop');
-
-Route::get('shop-details', function () {
-    return view('frontend.shopDetails');
-})->name('shopDetails');
+Route::controller(ServicePageController::class)->group(function(){
+    Route::get('sevice-layout', 'index');
+});
 
 // Route::get('contact', function () {
 //     return view('frontend.contact');
@@ -66,21 +63,6 @@ Route::get('cart', function (){
     return view('frontend.cart');
 })->name('cart');
 
-Route::get('checkout', function (){
-    return view('frontend.checkout');
-})->name('checkout');
-
-Route::get('wishlist', function (){
-    return view('frontend.wishlist');
-})->name('wishlist');
-
-Route::get('order-history', function (){
-    return view('frontend.orderHistory');
-})->name('orderHistory');
-
-Route::get('order-overview', function (){
-    return view('frontend.orderOverview');
-})->name('orderOverview');
 
 // Route::get('blog', function (){
 //     return view('frontend.blog');
@@ -94,7 +76,7 @@ Route::get('order-overview', function (){
 
 Route::middleware(['auth', 'verified'])->group(function(){
 
-    
+
 // Theme Default Admin Work ..
 Route::get('/admin', [Analytics::class, 'index'])->name('dashboard-analytics');
 

@@ -32,7 +32,7 @@
 
     @include('frontend.menu')
 
-    <main>
+    <main class="min-h-[70vh]">
         {{ $slot }}
     </main>
 
