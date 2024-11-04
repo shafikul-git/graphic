@@ -45,6 +45,7 @@ use App\Http\Controllers\user_interface\TooltipsPopovers;
 use App\Http\Controllers\pages\AccountSettingsConnections;
 use App\Http\Controllers\pages\AccountSettingsNotifications;
 use App\Http\Controllers\authentications\ForgotPasswordBasic;
+use App\Http\Controllers\FreeTrialController;
 use App\Http\Controllers\user_interface\PaginationBreadcrumbs;
 
 Route::get('/', function () {
@@ -62,6 +63,11 @@ Route::get('contact', function () {
 Route::get('cart', function (){
     return view('frontend.cart');
 })->name('cart');
+
+Route::controller(FreeTrialController::class)->group(function (){
+    Route::get('free-trial','get')->name('freeTrial');
+    Route::post('free-trial','store')->name('freeTrialStore');
+});
 
 
 // Route::get('blog', function (){

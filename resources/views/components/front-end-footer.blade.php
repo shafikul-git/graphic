@@ -138,7 +138,7 @@
                 <a href='javascript:void(0)' class='text-blue-500 font-semibold hover:underline'>Security</a>
             </li>
             <li>
-                <img class="w-80" src="{{ url('frontend/index/images/payment.png') }}" alt="payment" />
+                <img class="w-80" src="https://as2.ftcdn.net/v2/jpg/05/44/11/61/1000_F_544116186_wMwylR2U7NpAx90eZJlAyLkbnravVpCW.jpg" alt="payment" />
             </li>
         </ul>
         <p class='text-sm text-gray-200 md:ml-auto'>© Photo Editor Team. All rights reserved.</p>
