@@ -11,13 +11,15 @@
     @include('frontend.valuePropositions')
 
     @include('frontend.serviceOverView')
+    @include('components.serviceFAQ')
 
-    @include('frontend.editingProces')
+    {{-- @include('frontend.editingProces') --}}
 
     @include('frontend.whyOutsourceing')
 
     @include('frontend.categorys')
 
     @include('frontend.FAQ')
+
 </div>
 </x-GuestLayout>

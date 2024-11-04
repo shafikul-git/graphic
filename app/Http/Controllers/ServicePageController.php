@@ -6,7 +6,14 @@ use Illuminate\Http\Request;
 
 class ServicePageController extends Controller
 {
-    public function index (){
-        return view('layouts.servicePageLayout');
+
+    public function servicePage ($name = null)
+    {
+        if($name){
+            return view('frontend.services', ['name' => $name]);
+        } else{
+            return view('frontend.allservice');
+        }
+
     }
 }

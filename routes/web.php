@@ -52,12 +52,12 @@ Route::get('/', function () {
 })->name('home');
 
 Route::controller(ServicePageController::class)->group(function(){
-    Route::get('sevice-layout', 'index');
+    Route::get('service/{name?}', 'servicePage')->name('service');
 });
 
-// Route::get('contact', function () {
-//     return view('frontend.contact');
-// })->name('contact');
+Route::get('contact', function () {
+    return view('frontend.contact');
+})->name('contact');
 
 Route::get('cart', function (){
     return view('frontend.cart');

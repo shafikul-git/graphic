@@ -10,12 +10,14 @@ use Illuminate\View\Component;
 class BeforeAfter extends Component
 {
     public $images;
+    public $ariaClass;
     /**
      * Create a new component instance.
      */
-    public function __construct($beforeAfterKey)
+    public function __construct($beforeAfterKey, $ariaClass = null)
     {
-        $this->images = ModelsBeforeAfter::where('unique_key', $beforeAfterKey )->first();
+        $this->images = ModelsBeforeAfter::where('unique_key', $beforeAfterKey)->first();
+        $this->ariaClass = $ariaClass;
     }
 
     /**
@@ -23,6 +25,9 @@ class BeforeAfter extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.before-after', ['images' => $this->images]);
+        return view('components.before-after', [
+            'images' => $this->images,
+            'ariaClass' => $this->ariaClass
+        ]);
     }
 }
