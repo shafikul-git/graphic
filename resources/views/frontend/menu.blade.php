@@ -46,25 +46,25 @@
                         <ul
                             class='absolute shadow-lg bg-white space-y-3 lg:top-5 max-lg:top-8 -left-6 min-w-[250px] z-50 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500'>
                             <li class='border-b py-2 '>
-                                <a href='{{ route('service') }}'
+                                <a href='{{ route('service', 'family') }}'
                                     class='hover:text-[#007bff] text-gray-600 text-[15px] font-bold block'>
                                     Family {{ $prefix }}
                                 </a>
                             </li>
                             <li class='border-b py-2 '>
-                                <a href='{{ route('service') }}'
+                                <a href='{{ route('service', 'headshorts') }}'
                                     class='hover:text-[#007bff] text-gray-600 text-[15px] font-bold block'>
                                     Headshots {{ $prefix }}
                                 </a>
                             </li>
                             <li class='border-b py-2 '>
-                                <a href='{{ route('service') }}'
+                                <a href='{{ route('service', 'matenity') }}'
                                     class='hover:text-[#007bff] text-gray-600 text-[15px] font-bold block'>
                                     Maternity {{ $prefix }}
                                 </a>
                             </li>
                             <li class='border-b py-2 '>
-                                <a href='{{ route('service') }}'
+                                <a href='{{ route('service', 'wedding') }}'
                                     class='hover:text-[#007bff] text-gray-600 text-[15px] font-bold block'>
                                     Wedding {{ $prefix }}
                                 </a>

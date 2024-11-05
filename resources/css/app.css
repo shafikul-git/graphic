@@ -27,3 +27,10 @@
 .livvicFontFamily{
     font-family: "Livvic", sans-serif;
 }
+
+
+@media (max-width: 768px) {
+    #heroSectionBgChange {
+        background-image: none;
+    }
+}

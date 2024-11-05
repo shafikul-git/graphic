@@ -1,10 +1,11 @@
 @props([
     'buttonText',
     'roundClass' => '',
-    'link' => '#_'
+    'link' => '#_',
+    'linkClass' => ''
 ])
-<div class="{{ $roundClass ? $roundClass : '' }} flex  w-full h-full button">
-    <a href="{{ $link }}" class="relative px-5 py-2 font-medium text-white group">
+<div class="{{ $roundClass ? $roundClass : '' }} flex  w-full h-full button" {{ $attributes }}>
+    <a href="{{ $link }}" class="relative {{ $linkClass ? $linkClass : 'px-5 py-2' }} font-medium text-white group">
         <span
             class="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform translate-x-0 -skew-x-12 bg-purple-500 group-hover:bg-purple-700 group-hover:skew-x-12"></span>
         <span
