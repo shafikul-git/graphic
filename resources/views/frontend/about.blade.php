@@ -1,5 +1,5 @@
 @section('title', 'About Us')
-
+@vite(['resources/css/slider.css', 'resources/js/slider.js'])
 <x-guest-layout>
 
 
@@ -359,7 +359,6 @@
 </section>
 
 </x-guest-layout>
-<script src="https://cdn.jsdelivr.net/npm/pagedone@1.1.2/src/js/pagedone.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script>
