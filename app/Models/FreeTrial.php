@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class FreeTrial extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name', 'email', 'country', 'instruction', 'category', 'file_link', 'files'
+    ];
+
+    protected $casts = [
+        'files' => 'array'
+    ];
 }

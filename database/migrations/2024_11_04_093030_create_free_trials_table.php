@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('free_trials', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('category');
+            $table->text('instruction');
+            $table->string('country');
+            $table->string('file_link')->nullable();
+            $table->json('files')->nullable();
             $table->timestamps();
         });
     }
