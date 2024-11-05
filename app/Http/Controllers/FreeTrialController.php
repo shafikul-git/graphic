@@ -23,19 +23,21 @@ class FreeTrialController extends Controller
             "name" => "required|string",
             "instruction" => "required|string",
             "email" => "required|email",
-            "files.*" => "required|file|mimes:jpeg,png,jpg,gif,webp|max:30720", // Ensure this is correct
+            'fileLink' => 'nullable|string|required_without:files',
+            "files.*" => "nullable|file|mimes:jpeg,png,jpg,gif,webp|max:30720|required_without:fileLink",
         ]);
 
         $storeFileNam  = [];
 
-        if($request->hasFile("files")){
-            foreach($request->file('files') as $file){
+        if ($request->hasFile("files")) {
+            foreach ($request->file('files') as $file) {
                 $fileName = $file->getClientOriginalName();
-                $path = $file->storePubliclyAs("sampleFile", uniqid() . '___' . $currentDate .  '___' . $fileName , "public");
+                $path = $file->storePubliclyAs("sampleFile", uniqid() . '____' . $currentDate .  '____' . $fileName, "public");
                 array_push($storeFileNam, $path);
             }
         }
-        return $storeFileNam;
 
+
+        return $request;
     }
 }

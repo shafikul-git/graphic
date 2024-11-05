@@ -5,7 +5,7 @@
         </label>
         <input type="text" name="name" id="name" placeholder="Enter Your Name" required
             value="{{ old('name') }}"
-            class="w-full rounded-md border border-[#e0e0e0] bg-white py-1 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+            class="w-full rounded-md border border-[#e0e0e0] bg-white py-1  outline-none focus:border-[#6A64F1] focus:shadow-md" />
         @error('name')
             <p class="text-red-500">{{ $message }}</p>
         @enderror
@@ -16,7 +16,7 @@
         </label>
         <input type="text" name="country" id="country" placeholder="Enter Your Country" required
             value="{{ old('country') }}"
-            class="w-full rounded-md border border-[#e0e0e0] bg-white py-1 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+            class="w-full rounded-md border border-[#e0e0e0] bg-white py-1  outline-none focus:border-[#6A64F1] focus:shadow-md" />
         @error('country')
             <p class="text-red-500">{{ $message }}</p>
         @enderror
@@ -27,7 +27,7 @@
         </label>
         <input type="email" name="email" id="email" placeholder="example@domain.com" required
             value="{{ old('email') }}"
-            class="w-full rounded-md border border-[#e0e0e0] bg-white py-1 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+            class="w-full rounded-md border border-[#e0e0e0] bg-white py-1  outline-none focus:border-[#6A64F1] focus:shadow-md" />
         @error('email')
             <p class="text-red-500">{{ $message }}</p>
         @enderror
@@ -37,8 +37,20 @@
             Enter Your Instruction*
         </label>
         <textarea name="instruction" id="instruction" cols="15" rows="3" placeholder="Enter your instructions here" required
-            class="w-full rounded-md border border-[#e0e0e0] bg-white py-1 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">{{ old('instruction') }}</textarea>
+            class="w-full rounded-md border border-[#e0e0e0] bg-white py-1  outline-none focus:border-[#6A64F1] focus:shadow-md">{{ old('instruction') }}</textarea>
         @error('instruction')
+            <p class="text-red-500">{{ $message }}</p>
+        @enderror
+    </div>
+
+     <div class="mb-2">
+        <label for="fileLink" class="mb-1 block text-base font-medium text-[#07074D]">
+            If you have the file link <span class="text-sm font-normal" >(optional)</span>
+        </label>
+        <input type="text" name="fileLink" id="fileLink" placeholder="https://..."
+            value="{{ old('fileLink') }}"
+            class="w-full rounded-md border border-[#e0e0e0] bg-white py-1  outline-none focus:border-[#6A64F1] focus:shadow-md" />
+        @error('fileLink')
             <p class="text-red-500">{{ $message }}</p>
         @enderror
     </div>
@@ -51,7 +63,7 @@
                 <span class="mb-2 block text-xl font-semibold text-[#07074D]">
                     Drop files here
                 </span>
-                <span class="mb-2 block text-base font-medium text-[#6B7280]">
+                <span class="mb-2 block ">
                     Or
                 </span>
                 <span
