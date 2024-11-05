@@ -131,7 +131,7 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div
-                        class="group w-full flex-wrap flex items-center gap-8  transition-all duration-500 p-8  lg:flex-nowrap">
+                        class=" group w-full flex-wrap flex items-center gap-8  transition-all duration-500 p-8  lg:flex-nowrap">
                         <div class=" w-full lg:w-48 h-64">
                             <img src="https://pagedone.io/asset/uploads/1696238786.png" alt="image"
                                 class="rounded-2xl h-full object-cover mx-auto lg:mx-0 lg:w-full">

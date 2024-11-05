@@ -146,12 +146,12 @@
                         </ul>
                     </li>
                     <li class='group max-lg:border-b max-lg:py-3 relative'>
-                        <a href='javascript:void(0)'
+                        <a href="{{ route('portfolio') }}"
                             class='hover:text-[#007bff] text-gray-600 text-[15px] font-bold lg:hover:fill-[#007bff] block'>Portfolio
                         </a>
                     </li>
                     <li class='max-lg:border-b max-lg:py-3'>
-                        <a href='javascript:void(0)'
+                        <a href="{{ route('pricing') }}"
                             class='hover:text-[#007bff] text-gray-600 text-[15px] font-bold block'>Pricing</a>
                     </li>
                     <li class='max-lg:border-b max-lg:py-3'>

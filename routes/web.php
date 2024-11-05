@@ -47,6 +47,8 @@ use App\Http\Controllers\user_interface\TooltipsPopovers;
 use App\Http\Controllers\pages\AccountSettingsConnections;
 use App\Http\Controllers\pages\AccountSettingsNotifications;
 use App\Http\Controllers\authentications\ForgotPasswordBasic;
+use App\Http\Controllers\portfolioController;
+use App\Http\Controllers\pricingController;
 use App\Http\Controllers\user_interface\PaginationBreadcrumbs;
 
 Route::get('/', function () {
@@ -54,6 +56,8 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('about', [AboutController::class, 'index'])->name('about');
+Route::get('portfolio', [portfolioController::class, 'index'])->name('portfolio');
+Route::get('pricing', [pricingController::class, 'index'])->name('pricing');
 
 Route::controller(ServicePageController::class)->group(function(){
     Route::get('service/{name?}', 'servicePage')->name('service');
