@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use DateTimeZone;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Validation\ValidationException;
 
 class FreeTrialController extends Controller
 {
@@ -12,22 +15,27 @@ class FreeTrialController extends Controller
     }
     public function store(Request $request)
     {
+        $getDate = new \DateTime("now", new DateTimeZone("Asia/Dhaka"));
+        $currentDate = $getDate->format('Y_m_d H-i-s');
+
         $request->validate([
-            "files"=> "required|file|mimes:jpeg,png,jpg,gif,webp,arw|max:30720",
             "country" => "required|string",
-            "name"=> "required|string",
-            "instruction"=> "required|string",
-            "email"=> "required|email",
+            "name" => "required|string",
+            "instruction" => "required|string",
+            "email" => "required|email",
+            "files.*" => "required|file|mimes:jpeg,png,jpg,gif,webp|max:30720", // Ensure this is correct
         ]);
 
-        if($request->file("files")){
-            dd($request->file('files'));
-            $fileName = $request->file("files")->getClientOriginalName();
-            $extension = $request->file("files")->getClientOriginalExtension();
-            $request->file("files")->storeAs("public", time(). '___' . $fileName . '___' . uniqid() , $extension);
-            return "upload ok";
+        $storeFileNam  = [];
+
+        if($request->hasFile("files")){
+            foreach($request->file('files') as $file){
+                $fileName = $file->getClientOriginalName();
+                $path = $file->storePubliclyAs("sampleFile", uniqid() . '___' . $currentDate .  '___' . $fileName , "public");
+                array_push($storeFileNam, $path);
+            }
         }
-        return "ok";
+        return $storeFileNam;
 
     }
 }

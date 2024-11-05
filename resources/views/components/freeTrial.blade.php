@@ -1,4 +1,4 @@
-<x-form action="{{ route('freeTrial') }}" method="POST" class="py-4 px-9">
+<x-form action="{{ route('freeTrial') }}" method="POST" class="py-4 px-9" enctype="multipart/form-data">
     <div class="mb-2">
         <label for="name" class="mb-1 block text-base font-medium text-[#07074D]">
             Enter Your Name*
@@ -61,13 +61,13 @@
             </div>
         </div>
     </div>
-    @error('file')
+    @error('files.*')
         <p class="text-red-500">{{ $message }}</p>
     @enderror
     <div id="file-preview" class="mb-6"></div>
 
     <div>
-        <button
+        <button type="submit"
             class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
             Send File
         </button>
