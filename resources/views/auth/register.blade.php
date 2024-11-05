@@ -52,14 +52,14 @@
     </form> --}}
 
 
-    <div class="font-[sans-serif] bg-gray-50 flex items-center md:h-screen p-4">
+    <div class="font-[sans-serif] bg-gray-50 flex items-center md:h-screen p-4 my-5 md:my-[5rem]">
         <div class="w-full max-w-4xl max-md:max-w-xl mx-auto">
           <div class="bg-white grid md:grid-cols-2 gap-16 w-full sm:p-8 p-6 shadow-md rounded-md overflow-hidden">
             <div class="max-md:order-1 space-y-6">
               <div class="md:mb-16 mb-8">
                 <h3 class="text-gray-800 text-2xl font-bold">Instant Access</h3>
               </div>
-  
+
               <div class="space-y-6">
                 <button type="button"
                   class="w-full px-5 py-2.5 flex items-center justify-center rounded-md text-white text-base tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700">
@@ -105,13 +105,13 @@
                 </button>
               </div>
             </div>
-  
+
             <form method="POST" action="{{ route('register') }}" class="w-full">
                 @csrf
               <div class="mb-8">
                 <h3 class="text-gray-800 text-2xl font-bold">Register</h3>
               </div>
-  
+
               <div class="space-y-6">
                 <div>
                   <label for="name" class="text-gray-800 text-sm mb-2 block">Name</label>
@@ -165,7 +165,7 @@
                   </label>
                 </div>
               </div>
-  
+
               <div class="!mt-8">
                 <button type="submit" class="w-full py-2.5 px-4 text-sm tracking-wider font-semibold rounded-md bg-blue-600 hover:bg-blue-700 text-white focus:outline-none">
                   Create Account
