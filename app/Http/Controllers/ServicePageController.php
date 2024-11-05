@@ -10,7 +10,7 @@ class ServicePageController extends Controller
     public function servicePage ($name = null)
     {
         if($name){
-            return view('frontend.services', ['name' => $name]);
+            return view('frontend.servicePageLayout', ['name' => $name]);
         } else{
             return view('frontend.allservice');
         }

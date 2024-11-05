@@ -12,7 +12,7 @@ class FreeTrialController extends Controller
 {
     public function index()
     {
-        return view("");
+        return view("frontend.freetrial");
     }
     public function store(Request $request)
     {
