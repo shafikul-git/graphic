@@ -8,14 +8,15 @@
             <x-service.beforeafter1 />
 
             {{-- Service Details Heading --}}
-            <div class="my-[7rem] text-center livvicFontFamily">
-                <h1 class="text-xl md:text-2xl lg:text-5xl font-extrabold ">Best Service the work it is</h1>
-                <p class="text-sm md:text-xl lg:text-2xl font-normal">Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit.
-                    Eum expedita ullam eius ipsam, cumque sequi sed recusandae voluptates perspiciatis accusamus commodi
-                    molestias dolorem libero ipsa, officia quibusdam? Deleniti, labore. Mollitia.</p>
+            <div class="my-28 text-center livvicFontFamily px-4 md:px-8 lg:px-16">
+                <h1 class="text-lg md:text-3xl lg:text-5xl font-extrabold">
+                    Best Service the Work It Is
+                </h1>
+                <p class="text-sm md:text-lg lg:text-xl font-normal mt-4">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum expedita ullam eius ipsam, cumque sequi sed recusandae voluptates perspiciatis accusamus commodi molestias dolorem libero ipsa, officia quibusdam? Deleniti, labore. Mollitia.
+                </p>
             </div>
-
+            
             {{-- Before After Service Details --}}
             <x-service.beforeafter2 />
 
@@ -23,7 +24,7 @@
             <x-service.beforeafter3 />
 
             {{-- Service Package --}}
-            <x-service.ourpackage />
+            <x-service.pricing />
 
             {{-- Slider Othe Cateogey --}}
             <x-service.othercategoryslider />

@@ -1,17 +1,19 @@
 <?php
 
-use App\Http\Controllers\ServicePageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\layouts\Blank;
 use App\Http\Controllers\layouts\Fluid;
 use App\Http\Controllers\icons\Boxicons;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\cards\CardBasic;
 use App\Http\Controllers\pages\MiscError;
 use App\Http\Controllers\layouts\Container;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\dashboard\Analytics;
+use App\Http\Controllers\FreeTrialController;
 use App\Http\Controllers\layouts\WithoutMenu;
 use App\Http\Controllers\layouts\WithoutNavbar;
+use App\Http\Controllers\ServicePageController;
 use App\Http\Controllers\user_interface\Alerts;
 use App\Http\Controllers\user_interface\Badges;
 use App\Http\Controllers\user_interface\Footer;
@@ -45,12 +47,13 @@ use App\Http\Controllers\user_interface\TooltipsPopovers;
 use App\Http\Controllers\pages\AccountSettingsConnections;
 use App\Http\Controllers\pages\AccountSettingsNotifications;
 use App\Http\Controllers\authentications\ForgotPasswordBasic;
-use App\Http\Controllers\FreeTrialController;
 use App\Http\Controllers\user_interface\PaginationBreadcrumbs;
 
 Route::get('/', function () {
     return view('frontend.index');
 })->name('home');
+
+Route::get('about', [AboutController::class, 'index'])->name('about');
 
 Route::controller(ServicePageController::class)->group(function(){
     Route::get('service/{name?}', 'servicePage')->name('service');

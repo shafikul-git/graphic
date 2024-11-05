@@ -155,7 +155,7 @@
                             class='hover:text-[#007bff] text-gray-600 text-[15px] font-bold block'>Pricing</a>
                     </li>
                     <li class='max-lg:border-b max-lg:py-3'>
-                        <a href='javascript:void(0)'
+                        <a href="{{ route('about') }}"
                             class='hover:text-[#007bff] text-gray-600 text-[15px] font-bold block'>About</a>
                     </li>
                     <li class='max-lg:border-b max-lg:py-3'>
