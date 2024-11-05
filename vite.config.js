@@ -42,8 +42,10 @@ export default defineConfig({
         laravel({
             input: [
                 "resources/css/app.css",
+                "resources/css/slider.css",
                 "resources/js/app.js",
                 "resources/js/custom.js",
+                "resources/js/slider.js",
                 'resources/assets/css/demo.css',
                 ...pageJsFiles,
                 ...vendorJsFiles,
