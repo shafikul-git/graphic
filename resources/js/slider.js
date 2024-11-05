@@ -17,14 +17,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Service page suggest other service
     var otherService = new Swiper(".ServiceSuggestSlider", {
-        slidesPerView: 3,
-        spaceBetween: 30,
+        effect: "coverflow",
+        grabCursor: true,
         loop: true,
-        freeMode: true,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
+        centeredSlides: true,
+        slidesPerView: 3,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        coverflowEffect: {
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
         },
+
     });
 
     // Pause autoplay on mouse enter
