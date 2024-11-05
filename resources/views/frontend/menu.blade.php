@@ -170,7 +170,7 @@
 
                 <a href="{{ route('service') }}" class="capitalize font-bold bg-indigo-300 hover:bg-indigo-500 hover:text-white hover:shadow-md hover:shadow-gray-500 transition-all duration-700 px-5 py-2 rounded-md  text-sm md:text-base">quick edit </a>
                 @if (Auth::check())
-                <a href="{{ route('service') }}" class="capitalize font-bold bg-indigo-300 hover:bg-indigo-500 hover:text-white hover:shadow-md hover:shadow-gray-500 transition-all duration-700 px-5 py-2 rounded-md  text-sm md:text-base">
+                <a href="{{ route('dashboard-analytics') }}" class="capitalize font-bold bg-indigo-300 hover:bg-indigo-500 hover:text-white hover:shadow-md hover:shadow-gray-500 transition-all duration-700 px-5 py-2 rounded-md  text-sm md:text-base">
                     <i class="fa-regular fa-user"></i>
                 </a>
                 @endif

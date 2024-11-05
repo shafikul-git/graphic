@@ -14,17 +14,29 @@ class FreeTrialController extends Controller
     {
         return view("frontend.freetrial");
     }
+
+    public function sample(){
+        return view('dashboard.freeTrial');
+    }
+    public function allSample(){
+        $allSample = FreeTrial::orderByDesc('id')->paginate(10);
+        $allSample->transform(function($item){
+            $item->instruction = strip_tags($item->instruction);
+            return $item;
+        });
+        return response()->json($allSample);
+    }
     public function store(Request $request)
     {
         $getDate = new \DateTime("now", new DateTimeZone("Asia/Dhaka"));
         $currentDate = $getDate->format('Y_m_d H-i-s');
 
         $request->validate([
-            "name" => "required|string",
+            "name" => "required|string|not_regex:/<[^>]*>/",
             "email" => "required|email|unique:free_trials,email",
             'category' => 'required|not_in:null',
-            "country" => "required|string",
-            "instruction" => "required|string",
+            "country" => "required|string|not_regex:/<[^>]*>/",
+            "instruction" => "required|string|not_regex:/<[^>]*>/",
             'fileLink' => 'nullable|string|required_without:files',
             "files.*" => "nullable|file|mimes:jpeg,png,jpg,gif,webp|max:30720|required_without:fileLink",
         ]);
@@ -50,7 +62,7 @@ class FreeTrialController extends Controller
         ]);
 
         if($sampleAdd){
-            return redirect()->back()->with('success', 'Sample Added');    
+            return redirect()->back()->with('success', 'Sample Added');
         }
         return redirect()->back()->with('error', 'Someting Went Wrong');
     }

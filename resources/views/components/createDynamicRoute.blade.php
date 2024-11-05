@@ -1,9 +1,10 @@
 <script>
-    function generateRoute(routeName, params = {}) {
+    function createDynamicRoute(routeName, params = {}) {
         let routes = {
             // user Edit
             userEdit: @json(route('user.edit', ':id')),
             userUpdate: @json(route('user.update', ':id')),
+            freeTrialSample: @json(route('freeTrial.allSample', ':id')),
             // Other Route
         };
 

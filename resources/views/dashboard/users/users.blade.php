@@ -152,14 +152,14 @@
 @push('scripts')
     <script>
         function updateUserModalFN(param) {
-            const editRoute = generateRoute('userEdit', { id: param });
-            const updateRoute = generateRoute('userUpdate', { id: param });
+            const editRoute = createDynamicRoute('userEdit', { id: param });
+            const updateRoute = createDynamicRoute('userUpdate', { id: param });
 
             (async () => {
                 try {
                     const getDataResult = await getData(editRoute);
-                    console.log(getDataResult.role);
-                    
+                    console.log(getDataResult);
+
                     const modalBody = document.querySelector('#updateUserModal .modal-body');
                     modalBody.innerHTML = `
                                    <x-form id="sumitData" method="PUT" action="${updateRoute}" :fields="[

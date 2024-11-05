@@ -59,8 +59,8 @@
 </html>
 
     {{-- @php
-    $errorsArray = $errors->all(); // সকল ইরোর বার্তাগুলো সংগ্রহ করা
-@endphp 
+    $errorsArray = $errors->all();
+@endphp
 
 @if ($errorsArray)
     <div class="bs-toast toast fade show bg-danger position-fixed bottom-0 end-0 m-3" role="alert" aria-live="assertive" aria-atomic="true">
@@ -73,7 +73,7 @@
         <div class="toast-body">
             <ul class="mb-0">
                 @foreach ($errorsArray as $error)
-                    <li>{{ $error }}</li> 
+                    <li>{{ $error }}</li>
                 @endforeach
             </ul>
         </div>

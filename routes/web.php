@@ -74,6 +74,11 @@ Route::get('cart', function (){
 Route::controller(FreeTrialController::class)->name('freeTrial.')->group(function (){
     Route::get('free-trial','index')->name('index');
     Route::post('free-trial','store')->name('store');
+
+    Route::middleware('auth')->group(function (){
+        Route::get('sample', 'sample')->name('sample');
+        Route::get('all-sample', 'allSample')->name('allSample');
+    });
 });
 
 

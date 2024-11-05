@@ -58,15 +58,11 @@
       ]
     },
     {
-      "route": "dashboard",
-      "name": "Chat",
-      "icon": "menu-icon tf-icons bx bx-chat",
-      "slug": "app-chat",
-      "target": "",
-      "badge": [
-        "label-primary fs-tiny",
-        "Pro"
-      ]
+      "route": "freeTrial.sample",
+      "name": "Sample",
+      "icon": "menu-icon tf-icons bx bx-expand-horizontal",
+      "slug": "freeTrial.sample",
+      "target": ""
     },
     {
       "url": "#",
