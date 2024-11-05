@@ -38,6 +38,29 @@
 
     <x-front-end-footer />
 
+
+    @once
+        @if (session('success') || session('error'))
+            <x-alert id="alertClose" onclick="alertClose()" :success="session('success')" :error="session('error')"></x-alert>
+        @endif
+    @endonce
+    @if ($errors->any())
+        <div class="">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <x-alert id="alertClose" onclick="alertClose()" error="Error Check Again"></x-alert>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <script>
+        function alertClose() {
+            const alertClose = document.getElementById('alertClose');
+            alertClose.style.display = 'none';
+        }
+    </script>
+
     <!--! icons -->
     <script src="https://kit.fontawesome.com/ed5a9b6893.js" crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

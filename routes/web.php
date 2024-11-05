@@ -64,9 +64,9 @@ Route::get('cart', function (){
     return view('frontend.cart');
 })->name('cart');
 
-Route::controller(FreeTrialController::class)->group(function (){
-    Route::get('free-trial','get')->name('freeTrial');
-    Route::post('free-trial','store')->name('freeTrialStore');
+Route::controller(FreeTrialController::class)->name('freeTrial.')->group(function (){
+    Route::get('free-trial','index')->name('index');
+    Route::post('free-trial','store')->name('store');
 });
 
 

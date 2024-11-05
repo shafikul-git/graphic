@@ -5,6 +5,8 @@
 @section('services')
 
     <section class="my-5">
+
+        {{-- Hero Section --}}
         <div id="heroSectionBgChange"
             class="md:mb-[3rem] grid md:grid-cols-2 grid-cols-1 order-2 md:order-1 md:gap-[5rem] gap-3 p-[1rem] md:p-0 rounded-md">
             <div class="relative w-full ">
@@ -23,16 +25,22 @@
                 <h3 class="livvicFontFamily text-xl md:text-2xl lg:text-5xl font-extrabold my-2">
                     High-end photo retouching
                 </h3>
-                <p class="font-normal livvicFontFamily text-sm md:text-xl lg:text-2xl my-5">
+                <p class="font-normal livvicFontFamily text-sm md:text-xl lg:text-2xl">
                     Our experts guarantee extraordinary modifications using professional techniques to improve the quality
                     and overall look of every high-end photo.
                 </p>
-                <a href="#"
-                    class="py-2 px-9 border border-indigo-300  rounded-md shadow-md shadow-gray-500 capitalize hover:bg-gray-900 hover:text-white transition-all duration-150">Try
-                    For Free</a>
+                <div class=" my-5 inline-flex gap-4">
+                    <a href="#"
+                        class="py-2 px-9 border border-indigo-300  rounded-md shadow-md shadow-gray-500 capitalize hover:bg-gray-900 hover:text-white transition-all duration-150">Try
+                        For Free</a>
+                    <a href="#"
+                        class="py-2 px-9 border border-indigo-300  rounded-md shadow-md shadow-gray-500 capitalize hover:bg-gray-900 hover:text-white transition-all duration-150">
+                        Order Now</a>
+                </div>
             </div>
         </div>
 
+        {{-- Before After Service Details --}}
         <div class="grid md:grid-cols-2 grid-cols-1 md:gap-[5rem]">
             <div class="">
                 <x-before-after beforeAfterKey="before_after_9" />
@@ -46,13 +54,19 @@
                         hair,
                         fur,
                         and difficult borders</p>
-                    <button
-                        class="font-bold livvicFontFamily py-3 px-5 bg-indigo-300 hover:bg-indigo-500 my-2 rounded-md capitalize shadow-md shadow-gray-500 transition-all duration-200 hover:text-white">get
-                        Start</button>
+                    <div class=" my-5 inline-flex gap-4">
+                        <a href="#"
+                            class="py-2 px-9 border border-indigo-300  rounded-md shadow-md shadow-gray-500 capitalize hover:bg-gray-900 hover:text-white transition-all duration-150">Try
+                            For Free</a>
+                        <a href="#"
+                            class="py-2 px-9 border border-indigo-300  rounded-md shadow-md shadow-gray-500 capitalize hover:bg-gray-900 hover:text-white transition-all duration-150">
+                            Order Now</a>
+                    </div>
                 </div>
             </div>
         </div>
 
+        {{-- Service Details Heading --}}
         <div class="my-[7rem] text-center livvicFontFamily">
             <h1 class="text-xl md:text-2xl lg:text-5xl font-extrabold ">Best Service the work it is</h1>
             <p class="text-sm md:text-xl lg:text-2xl font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -60,6 +74,7 @@
                 molestias dolorem libero ipsa, officia quibusdam? Deleniti, labore. Mollitia.</p>
         </div>
 
+        {{-- Before After Service Details --}}
         <div class="grid md:grid-cols-2 grid-cols-1 md:gap-[5rem]">
             <div class="flex items-center md:order-1 order-2">
                 <div class="px-3 py-2">
@@ -69,9 +84,14 @@
                         hair,
                         fur,
                         and difficult borders</p>
-                    <button
-                        class="font-bold livvicFontFamily py-3 px-5 bg-indigo-300 hover:bg-indigo-500 my-2 rounded-md capitalize shadow-md shadow-gray-500 transition-all duration-200 hover:text-white">get
-                        Start</button>
+                    <div class=" my-5 inline-flex gap-4">
+                        <a href="#"
+                            class="py-2 px-9 border border-indigo-300  rounded-md shadow-md shadow-gray-500 capitalize hover:bg-gray-900 hover:text-white transition-all duration-150">Try
+                            For Free</a>
+                        <a href="#"
+                            class="py-2 px-9 border border-indigo-300  rounded-md shadow-md shadow-gray-500 capitalize hover:bg-gray-900 hover:text-white transition-all duration-150">
+                            Order Now</a>
+                    </div>
                 </div>
             </div>
             <div class="md:order-2 order-1">
@@ -79,6 +99,7 @@
             </div>
         </div>
 
+        {{-- Before After Service Details --}}
         <div class="grid md:grid-cols-2 grid-cols-1 md:gap-[5rem] mt-[4rem]">
             <div class="flex items-center md:order-2 order-2">
                 <div class="px-3 py-2">
@@ -88,9 +109,14 @@
                         hair,
                         fur,
                         and difficult borders</p>
-                    <button
-                        class="font-bold livvicFontFamily py-3 px-5 bg-indigo-300 hover:bg-indigo-500 my-2 rounded-md capitalize shadow-md shadow-gray-500 transition-all duration-200 hover:text-white">get
-                        Start</button>
+                    <div class=" my-5 inline-flex gap-4">
+                        <a href="#"
+                            class="py-2 px-9 border border-indigo-300  rounded-md shadow-md shadow-gray-500 capitalize hover:bg-gray-900 hover:text-white transition-all duration-150">Try
+                            For Free</a>
+                        <a href="#"
+                            class="py-2 px-9 border border-indigo-300  rounded-md shadow-md shadow-gray-500 capitalize hover:bg-gray-900 hover:text-white transition-all duration-150">
+                            Order Now</a>
+                    </div>
                 </div>
             </div>
             <div class="md:order-1 order-1">
@@ -98,6 +124,7 @@
             </div>
         </div>
 
+        {{-- Service Package --}}
         <div class="">
             <h3 class="livvicFontFamily text-center mt-[4rem] mb-4 text-xl md:text-2xl lg:text-5xl font-extrabold ">Our
                 Retouch service List</h3>
@@ -173,27 +200,7 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 my-[4rem] rounded-md bg-[#ff5c33af]">
-            <div class="flex items-center justify-center">
-                <div class="text-center md:text-start pt-[1rem] md:pt-0">
-                    <p class="font-normal livvicFontFamily text-sm  my-2 uppercase">
-                        Package
-                    </p>
-                    <h3 class="livvicFontFamily text-xl md:text-2xl lg:text-5xl font-extrabold my-2 uppercase">
-                        Try For Free
-                    </h3>
-                    <ul class="text-start">
-                        <li>Fast, high-quality photo editing</li>
-                        <li>Receive your edited image within 24 hours</li>
-                        <li>24/7 customer support you can rely on</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="">
-                <x-freeTrial />
-            </div>
-        </div>
-
+        {{-- Slider Othe Cateogey --}}
         <div class="">
             <div class="px-[3rem] md:px-[7rem] lg:px-[12rem] xl:px-[16rem] text-center ">
                 <h3 class="livvicFontFamily text-xl md:text-2xl lg:text-5xl font-extrabold my-2 uppercase">
@@ -212,13 +219,17 @@
 
 
                             <div class="swiper-slide">
+                                <x-before-after beforeAfterKey="before_after_9" />
+                            </div>
+                            <div class="swiper-slide">
                                 <div
                                     class="bg-white sm:p-8 shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full max-w-xl rounded-lg font-[sans-serif] overflow-hidden mx-auto mt-4">
                                     <div class="flex items-center">
                                         <p class="text-sm text-gray-600 text-right">
-                                           sdfsfsfsfsffsfsfsdfsdsdfsd
+                                            sdfsfsfsfsffsfsfsdfsdsdfsd
                                         </p>
-                                        <img src="https://ephotovn.com/wp-content/themes/ephotoWand/assets/images/photo-retouching/portrait/after-5.jpg" class=" ml-6 rounded-full" loding="lazy"
+                                        <img src="https://ephotovn.com/wp-content/themes/ephotoWand/assets/images/photo-retouching/portrait/after-5.jpg"
+                                            class=" ml-6 rounded-full" loding="lazy"
                                             style="height: 200px; width: 300px;" />
                                     </div>
                                     <h3 class="text-gray-800 text-lg font-semibold mt-4">fsfsfsfsdfsdfsdffs</h3>
@@ -229,9 +240,10 @@
                                     class="bg-white sm:p-8 shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full max-w-xl rounded-lg font-[sans-serif] overflow-hidden mx-auto mt-4">
                                     <div class="flex items-center">
                                         <p class="text-sm text-gray-600 text-right">
-                                           sdfsfsfsfsffsfsfsdfsdsdfsd
+                                            sdfsfsfsfsffsfsfsdfsdsdfsd
                                         </p>
-                                        <img src="https://ephotovn.com/wp-content/themes/ephotoWand/assets/images/photo-retouching/portrait/after-5.jpg" class=" ml-6 rounded-full" loding="lazy"
+                                        <img src="https://ephotovn.com/wp-content/themes/ephotoWand/assets/images/photo-retouching/portrait/after-5.jpg"
+                                            class=" ml-6 rounded-full" loding="lazy"
                                             style="height: 200px; width: 300px;" />
                                     </div>
                                     <h3 class="text-gray-800 text-lg font-semibold mt-4">fsfsfsfsdfsdfsdffs</h3>
@@ -242,9 +254,10 @@
                                     class="bg-white sm:p-8 shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full max-w-xl rounded-lg font-[sans-serif] overflow-hidden mx-auto mt-4">
                                     <div class="flex items-center">
                                         <p class="text-sm text-gray-600 text-right">
-                                           sdfsfsfsfsffsfsfsdfsdsdfsd
+                                            sdfsfsfsfsffsfsfsdfsdsdfsd
                                         </p>
-                                        <img src="https://ephotovn.com/wp-content/themes/ephotoWand/assets/images/photo-retouching/portrait/after-5.jpg" class=" ml-6 rounded-full" loding="lazy"
+                                        <img src="https://ephotovn.com/wp-content/themes/ephotoWand/assets/images/photo-retouching/portrait/after-5.jpg"
+                                            class=" ml-6 rounded-full" loding="lazy"
                                             style="height: 200px; width: 300px;" />
                                     </div>
                                     <h3 class="text-gray-800 text-lg font-semibold mt-4">fsfsfsfsdfsdfsdffs</h3>
@@ -255,9 +268,10 @@
                                     class="bg-white sm:p-8 shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full max-w-xl rounded-lg font-[sans-serif] overflow-hidden mx-auto mt-4">
                                     <div class="flex items-center">
                                         <p class="text-sm text-gray-600 text-right">
-                                           sdfsfsfsfsffsfsfsdfsdsdfsd
+                                            sdfsfsfsfsffsfsfsdfsdsdfsd
                                         </p>
-                                        <img src="https://ephotovn.com/wp-content/themes/ephotoWand/assets/images/photo-retouching/portrait/after-5.jpg" class=" ml-6 rounded-full" loding="lazy"
+                                        <img src="https://ephotovn.com/wp-content/themes/ephotoWand/assets/images/photo-retouching/portrait/after-5.jpg"
+                                            class=" ml-6 rounded-full" loding="lazy"
                                             style="height: 200px; width: 300px;" />
                                     </div>
                                     <h3 class="text-gray-800 text-lg font-semibold mt-4">fsfsfsfsdfsdfsdffs</h3>
@@ -268,22 +282,10 @@
                                     class="bg-white sm:p-8 shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full max-w-xl rounded-lg font-[sans-serif] overflow-hidden mx-auto mt-4">
                                     <div class="flex items-center">
                                         <p class="text-sm text-gray-600 text-right">
-                                           sdfsfsfsfsffsfsfsdfsdsdfsd
+                                            sdfsfsfsfsffsfsfsdfsdsdfsd
                                         </p>
-                                        <img src="https://ephotovn.com/wp-content/themes/ephotoWand/assets/images/photo-retouching/portrait/after-5.jpg" class=" ml-6 rounded-full" loding="lazy"
-                                            style="height: 200px; width: 300px;" />
-                                    </div>
-                                    <h3 class="text-gray-800 text-lg font-semibold mt-4">fsfsfsfsdfsdfsdffs</h3>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div
-                                    class="bg-white sm:p-8 shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full max-w-xl rounded-lg font-[sans-serif] overflow-hidden mx-auto mt-4">
-                                    <div class="flex items-center">
-                                        <p class="text-sm text-gray-600 text-right">
-                                           sdfsfsfsfsffsfsfsdfsdsdfsd
-                                        </p>
-                                        <img src="https://ephotovn.com/wp-content/themes/ephotoWand/assets/images/photo-retouching/portrait/after-5.jpg" class=" ml-6 rounded-full" loding="lazy"
+                                        <img src="https://ephotovn.com/wp-content/themes/ephotoWand/assets/images/photo-retouching/portrait/after-5.jpg"
+                                            class=" ml-6 rounded-full" loding="lazy"
                                             style="height: 200px; width: 300px;" />
                                     </div>
                                     <h3 class="text-gray-800 text-lg font-semibold mt-4">fsfsfsfsdfsdfsdffs</h3>
@@ -292,12 +294,34 @@
 
 
                         </div>
-                        
+
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-pagination"></div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        {{-- Try For Free Form --}}
+        <div class="grid grid-cols-1 md:grid-cols-2 my-[4rem] rounded-md bg-[#ff5c33af]">
+            <div class="flex items-center justify-center">
+                <div class="text-center md:text-start pt-[1rem] md:pt-0">
+                    <p class="font-normal livvicFontFamily text-sm  my-2 uppercase">
+                        Package
+                    </p>
+                    <h3 class="livvicFontFamily text-xl md:text-2xl lg:text-5xl font-extrabold my-2 uppercase">
+                        Try For Free
+                    </h3>
+                    <ul class="text-start">
+                        <li>Fast, high-quality photo editing</li>
+                        <li>Receive your edited image within 24 hours</li>
+                        <li>24/7 customer support you can rely on</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="">
+                <x-freeTrial />
             </div>
         </div>
 

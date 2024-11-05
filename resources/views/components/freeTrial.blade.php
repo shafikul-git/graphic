@@ -1,4 +1,4 @@
-<x-form action="{{ route('freeTrial') }}" method="POST" class="py-4 px-9" enctype="multipart/form-data">
+<x-form action="{{ route('freeTrial.store') }}" method="POST" class="py-4 px-9" enctype="multipart/form-data">
     <div class="mb-2">
         <label for="name" class="mb-1 block text-base font-medium text-[#07074D]">
             Enter Your Name*

@@ -57,4 +57,26 @@
     
 </div>
 
+{{-- Try For Free Form --}}
+<div class="grid grid-cols-1 md:grid-cols-2 my-[4rem] rounded-md bg-[#ff5c33af]">
+    <div class="flex items-center justify-center">
+        <div class="text-center md:text-start pt-[1rem] md:pt-0">
+            <p class="font-normal livvicFontFamily text-sm  my-2 uppercase">
+                Package
+            </p>
+            <h3 class="livvicFontFamily text-xl md:text-2xl lg:text-5xl font-extrabold my-2 uppercase">
+                Try For Free
+            </h3>
+            <ul class="text-start">
+                <li>Fast, high-quality photo editing</li>
+                <li>Receive your edited image within 24 hours</li>
+                <li>24/7 customer support you can rely on</li>
+            </ul>
+        </div>
+    </div>
+    <div class="">
+        <x-freeTrial />
+    </div>
+</div>
+
 @endsection

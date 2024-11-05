@@ -21,7 +21,7 @@ class FreeTrialController extends Controller
 
         $request->validate([
             "name" => "required|string",
-            "email" => "required|email",
+            "email" => "required|email|unique:free_trials,email",
             'category' => 'required|not_in:null',
             "country" => "required|string",
             "instruction" => "required|string",
@@ -39,7 +39,7 @@ class FreeTrialController extends Controller
             }
         }
 
-        FreeTrial::create([
+        $sampleAdd = FreeTrial::create([
             'name' => $request->name,
             'email' => $request->email,
             'category' => $request->category,
@@ -49,7 +49,9 @@ class FreeTrialController extends Controller
             'files' => $storeFileNam,
         ]);
 
-
-        return 'ok';
+        if($sampleAdd){
+            return redirect()->back()->with('success', 'Sample Added');    
+        }
+        return redirect()->back()->with('error', 'Someting Went Wrong');
     }
 }
