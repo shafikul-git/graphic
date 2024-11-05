@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('sample_files', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->string('category');
+            $table->text('instruction');
+            $table->string('country');
+            $table->string('file_link')->nullable();
+            $table->string('files')->nullable();
             $table->timestamps();
         });
     }

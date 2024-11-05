@@ -19,6 +19,7 @@ class FreeTrialController extends Controller
         $currentDate = $getDate->format('Y_m_d H-i-s');
 
         $request->validate([
+            'category' => 'required|not_in:null',
             "country" => "required|string",
             "name" => "required|string",
             "instruction" => "required|string",
