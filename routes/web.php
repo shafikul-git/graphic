@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\layouts\Blank;
 use App\Http\Controllers\layouts\Fluid;
@@ -8,10 +9,13 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\cards\CardBasic;
 use App\Http\Controllers\pages\MiscError;
 use App\Http\Controllers\layouts\Container;
+use App\Http\Controllers\pricingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\dashboard\Analytics;
 use App\Http\Controllers\FreeTrialController;
 use App\Http\Controllers\layouts\WithoutMenu;
+use App\Http\Controllers\portfolioController;
 use App\Http\Controllers\layouts\WithoutNavbar;
 use App\Http\Controllers\ServicePageController;
 use App\Http\Controllers\user_interface\Alerts;
@@ -47,8 +51,6 @@ use App\Http\Controllers\user_interface\TooltipsPopovers;
 use App\Http\Controllers\pages\AccountSettingsConnections;
 use App\Http\Controllers\pages\AccountSettingsNotifications;
 use App\Http\Controllers\authentications\ForgotPasswordBasic;
-use App\Http\Controllers\portfolioController;
-use App\Http\Controllers\pricingController;
 use App\Http\Controllers\user_interface\PaginationBreadcrumbs;
 
 Route::get('/', function () {
@@ -82,6 +84,14 @@ Route::controller(FreeTrialController::class)->name('freeTrial.')->group(functio
     });
 });
 
+Route::middleware('auth')->controller(SettingController::class)->name('setting.')->group(function (){
+    Route::get('setting-home','index')->name('index');
+    Route::get('setting-service','service')->name('service');
+    Route::get('setting-slider','slider')->name('slider');
+    Route::get('setting-before-after','beforeAfter')->name('beforeAfter');
+    Route::get('setting-counter','counter')->name('counter');
+    Route::get('setting-footer','footer')->name('footer');
+});
 
 // Route::get('blog', function (){
 //     return view('frontend.blog');

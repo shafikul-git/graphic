@@ -1,7 +1,5 @@
 @section('title', 'All Service')
-@extends('layouts.servicePageLayout')
-
-@section('services')
+<x-guest-layout>
     <div class="livvicFontFamily  mx-5 text-center py-[4rem] md:mx-[6rem] ">
         <h2 class=" font-extrabold text-xl md:text-4xl xl:text-6xl">Our All Service Here</h2>
     <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum inventore quasi labore perferendis aliquam ex at, explicabo provident molestias nobis vitae reiciendis sapiente, tempora suscipit non est consequatur, facilis praesentium.</p>
@@ -79,4 +77,4 @@
     </div>
 </div>
 
-@endsection
+</x-guest-layout>

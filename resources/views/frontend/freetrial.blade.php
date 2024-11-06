@@ -1,3 +1,4 @@
+@section('title', 'Free Trial')
 <x-guest-layout>
     <div class="grid grid-cols-1 md:grid-cols-3 bg-indigo-50 my-6 rounded-md">
         <div class="col-span-2 livvicFontFamily flex justify-center items-center rounded-md"

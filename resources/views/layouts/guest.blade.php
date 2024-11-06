@@ -13,7 +13,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!--* favicon -->
-    <link rel="shortcut icon" href="{{ url('frontend/sss.png') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ url('frontend/4.jpg') }}" type="image/x-icon" />
     <!--! css link -->
     <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" />

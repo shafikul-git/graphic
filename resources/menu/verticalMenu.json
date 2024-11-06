@@ -322,6 +322,39 @@
       "name": "Documentation",
       "slug": "documentation",
       "target": "_blank"
+    },
+    {
+      "name": "Setting",
+      "icon": "menu-icon tf-icons bx bx-cog",
+      "slug": "setting",
+      "submenu": [
+        {
+          "route": "setting.index",
+          "name": "Home",
+          "slug": "setting.index"
+        },
+        {
+          "route": "setting.slider",
+          "name": "Slider",
+          "slug": "setting.slider"
+        },
+        {
+          "route": "setting.beforeAfter",
+          "name": "Before After",
+          "slug": "setting.beforeAfter"
+        },
+        {
+          "route": "setting.counter",
+          "name": "Counter",
+          "slug": "setting.counter"
+        },
+        {
+          "route": "setting.footer",
+          "name": "Footer",
+          "slug": "setting.footer"
+        }
+        
+      ]
     }
   ]
 }
