@@ -6,7 +6,7 @@
 ])
 <!-- Modal -->
 <div class="modal fade" id="{{ $MId }}" @if ($static) data-bs-backdrop="static" @endif
-    tabindex="-1">
+    tabindex="-1" {{ $attributes }}>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

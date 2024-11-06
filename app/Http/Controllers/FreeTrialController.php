@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FreeTrial;
 use DateTimeZone;
+use App\Models\FreeTrial;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 
 class FreeTrialController extends Controller
@@ -26,8 +27,6 @@ class FreeTrialController extends Controller
         $query->where(['name', 'email'], 'LIKE', '%' . $search . '%' );
        }
 
-        $allSample = $query->get();
-        // return $allSample;
         $allSample = $query->orderByDesc('id')->paginate(3)->appends(request()->query());
         return view('dashboard.freeTrial', compact('allSample'));
     }
@@ -39,16 +38,23 @@ class FreeTrialController extends Controller
 
         $request->validate([
             "name" => "required|string|not_regex:/<[^>]*>/",
-            "email" => "required|email|unique:free_trials,email",
+            "email" => "required|email|not_regex:/<[^>]*>/",
             'category' => 'required|not_in:null',
             "country" => "required|string|not_regex:/<[^>]*>/",
             "instruction" => "required|string|not_regex:/<[^>]*>/",
             'fileLink' => 'nullable|string|required_without:files',
-            "files.*" => "nullable|file|mimes:jpeg,png,jpg,gif,webp|max:30720|required_without:fileLink",
+            "files" => "array|required_without:fileLink",
+            "files.*" => "file|mimes:jpeg,png,jpg,gif,webp|max:30720",
         ]);
 
         $storeFileNam  = [];
-
+        foreach ($request->file('files') as $index => $file) {
+            Log::info("File $index: ", [
+                'original_name' => $file->getClientOriginalName(),
+                'size' => $file->getSize(),
+                'mime_type' => $file->getMimeType()
+            ]);
+        };
         if ($request->hasFile("files")) {
             foreach ($request->file('files') as $file) {
                 $fileName = $file->getClientOriginalName();
@@ -72,4 +78,16 @@ class FreeTrialController extends Controller
         }
         return redirect()->back()->with('error', 'Someting Went Wrong');
     }
+
+    public function destroy($id)
+    {
+        return $id;
+    }
+    public function singleData($id)
+    {
+       $data  = FreeTrial::find($id);
+       return response()->json($data);
+    }
+
+    
 }

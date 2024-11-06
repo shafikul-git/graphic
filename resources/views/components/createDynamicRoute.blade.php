@@ -4,7 +4,9 @@
             // user Edit
             userEdit: @json(route('user.edit', ':id')),
             userUpdate: @json(route('user.update', ':id')),
-            freeTrialSample: @json(route('freeTrial.allSample', ':id')),
+
+            // Sample 
+            singleData: @json(route('freeTrial.singleData', ':id')),
             // Other Route
         };
 

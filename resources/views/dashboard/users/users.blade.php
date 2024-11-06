@@ -85,24 +85,23 @@
     </x-Bmodal>
     <!-- Hoverable Table rows -->
     <div class="container-xl">
-        <div class="table-responsive">
-            <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#backDropModal">
-                                Add User
-                            </button>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="search-box">
-                                <i class="material-icons">&#xE8B6;</i>
-                                <input type="text" class="form-control" placeholder="Search&hellip;">
-                            </div>
-                        </div>
+        <div class="table-title">
+            <div class="row d-block d-md-flex">
+                <div class="col-sm-8 mb-2 mb-md-0">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#backDropModal">
+                        Add User
+                    </button>
+                </div>
+                <div class="col-sm-4">
+                    <div class="search-box">
+                        <i class="material-icons">&#xE8B6;</i>
+                        <input type="text" class="form-control" placeholder="Search&hellip;">
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <div class="table-wrapper"> 
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
                         <tr>
@@ -127,7 +126,7 @@
                                 <td>
                                     <button type="button" class="edit border-0 p-0" style="background: no-repeat;"
                                         title="Edit" data-toggle="tooltip" data-bs-toggle="modal"
-                                        data-bs-target="#updateUserModal" onclick="updateUserModalFN({{ $user->id }})">
+                                        data-bs-target="#updateUserModal" >
                                         <i class="material-icons">&#xE254;</i>
                                     </button>
                                     <a href="#" class="delete" title="Delete" data-toggle="tooltip">
@@ -139,137 +138,15 @@
 
                     </tbody>
                 </table>
-                {{ $users->links('pagination::bootstrap-5') }}
 
             </div>
         </div>
+        {{ $users->links('pagination::bootstrap-5') }}
+
     </div>
     <!--/ Hoverable Table rows -->
 @endsection
 
-@include('components.createDynamicRoute')
-
-@push('scripts')
-    <script>
-        // function updateUserModalFN(param) {
-        //     const editRoute = createDynamicRoute('userEdit', { id: param });
-        //     const updateRoute = createDynamicRoute('userUpdate', { id: param });
-
-        //     (async () => {
-        //         try {
-        //             const getDataResult = await getData(editRoute);
-        //             console.log(getDataResult);
-
-        //             const modalBody = document.querySelector('#updateUserModal .modal-body');
-        //             modalBody.innerHTML = `
-        //                            <x-form id="sumitData" method="PUT" action="${updateRoute}" :fields="[
-        //                                 [
-        //                                     'inputDuel' => true,
-        //                                     'inputs' => [
-        //                                         [
-        //                                             'type' => 'text',
-        //                                             'name' => 'name',
-        //                                             'id' => 'name',
-        //                                             'placeholder' => 'Enter Name ...',
-        //                                             'class' => 'form-control',
-        //                                             'value' => '${getDataResult.name}',
-        //                                             'label' => [
-        //                                                 'name' => 'Enter Name ',
-        //                                                 'class' => 'form-label',
-        //                                             ],
-        //                                         ],
-        //                                         [
-        //                                             'type' => 'select',
-        //                                             'name' => 'role',
-        //                                             'id' => 'role',
-        //                                             'value' => '${getDataResult.role}',
-        //                                             'class' => 'form-select',
-        //                                             'label' => [
-        //                                                 'name' => 'Select Role',
-        //                                                 'class' => 'form-label',
-        //                                             ],
-        //                                             'options' => [
-        //                                                 'admin' => 'Admin',
-        //                                                 'editor' => 'Manager',
-        //                                                 'employee' => 'Employee',
-        //                                                 'user' => 'User',
-        //                                             ],
-        //                                         ],
-        //                                     ],
-        //                                 ],
-        //                                 [
-        //                                     'type' => 'email',
-        //                                     'name' => 'email',
-        //                                     'value' => '${getDataResult.email}',
-        //                                     'id' => 'email',
-        //                                     'placeholder' => 'example@mail.com',
-        //                                     'class' => 'form-control',
-        //                                     'label' => [
-        //                                         'name' => 'Enter Email ',
-        //                                         'class' => 'form-label',
-        //                                     ],
-        //                                 ],
-        //                                 [
-        //                                     'inputDuel' => true,
-        //                                     'inputs' => [
-        //                                         [
-        //                                             'type' => 'password',
-        //                                             'name' => 'password',
-        //                                             'id' => 'password',
-        //                                             'placeholder' => '*******',
-        //                                             'class' => 'form-control',
-        //                                             'label' => [
-        //                                                 'name' => 'Enter password ',
-        //                                                 'class' => 'form-label',
-        //                                             ],
-        //                                         ],
-        //                                         [
-        //                                             'type' => 'password',
-        //                                             'name' => 'password_confirmation',
-        //                                             'id' => 'password_confirmation',
-        //                                             'placeholder' => '*******',
-        //                                             'class' => 'form-control',
-        //                                             'label' => [
-        //                                                 'name' => 'Enter Repassword ',
-        //                                                 'class' => 'form-label',
-        //                                             ],
-        //                                         ],
-        //                                     ],
-        //                                 ],
-        //                             ]">
-        //                                 <input type="submit" value="Submit" class="btn btn-primary mt-3">
-        //                             </x-form>
-        //                 `;
-        //             // console.log('GET Data:', getDataResult);
-        //         } catch (error) {
-        //             console.error('Error fetching data:', error);
-        //         }
-        //     })();
-        //     var updateUserModal = new bootstrap.Modal(document.getElementById('updateUserModal'));
-        //     updateUserModal.show();
-
-        // }
-        // document.addEventListener('DOMContentLoaded', function() {
-        //     var modalElement = document.getElementById('updateUserModal');
-
-        //     modalElement.addEventListener('hidden.bs.modal', function() {
-        //         var modalBackdrop = document.querySelector('.modal-backdrop');
-        //         if (modalBackdrop) {
-        //             modalBackdrop.remove();
-        //         }
-        //     });
-        // });
-
-
-        // POST request
-        // const postDataResult = await postData(url, { key: 'value' });
-        // console.log('POST Data:', postDataResult);
-
-        // // UPDATE request
-        // const updateDataResult = await updateData(url, { key: 'updatedValue' });
-        // console.log('UPDATE Data:', updateDataResult);
-    </script>
-@endpush
 
 <style>
     .table-responsive {

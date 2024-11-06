@@ -77,6 +77,8 @@ Route::controller(FreeTrialController::class)->name('freeTrial.')->group(functio
 
     Route::middleware('auth')->group(function (){
         Route::get('sample', 'sample')->name('sample');
+        Route::delete('sample/{id}', 'destroy')->name('destroy');
+        Route::get('sample/{id}', 'singleData')->name('singleData');
     });
 });
 

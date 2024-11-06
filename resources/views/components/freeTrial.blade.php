@@ -37,7 +37,7 @@
             Select Category*
         </label>
         <select name="category" id="category"  class="w-full rounded-md border border-[#e0e0e0] bg-white py-1  outline-none focus:border-[#6A64F1] focus:shadow-md">
-            <option value="" selected>Select Category</option>
+            <option value="" disabled selected>Select Category</option>
             <option value="newborn" {{ old('category') == 'newborn' ? 'selected' : '' }}>New Born</option>
             <option value="metarnity" {{ old('category') == 'metarnity' ? 'selected' : '' }}>metarnity</option>
             <option value="boudir" {{ old('category') == 'boudir' ? 'selected' : '' }}>boudir</option>
