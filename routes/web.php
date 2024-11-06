@@ -52,6 +52,7 @@ use App\Http\Controllers\user_interface\TooltipsPopovers;
 use App\Http\Controllers\pages\AccountSettingsConnections;
 use App\Http\Controllers\pages\AccountSettingsNotifications;
 use App\Http\Controllers\authentications\ForgotPasswordBasic;
+use App\Http\Controllers\setting\FileUploaderController;
 use App\Http\Controllers\user_interface\PaginationBreadcrumbs;
 
 Route::get('/', function () {
@@ -99,6 +100,11 @@ Route::middleware('auth')->controller(HomePageController::class)->name('homePage
     Route::post('home-page-store-data', 'store')->name('store');
 });
 
+
+
+
+Route::get('test', [FileUploaderController::class, 'test']);
+Route::post('test', [FileUploaderController::class, 'store'])->name('test');
 // Route::get('blog', function (){
 //     return view('frontend.blog');
 // })->name('blog');

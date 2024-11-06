@@ -7,5 +7,12 @@ use Illuminate\Http\Request;
 
 class FileUploaderController extends Controller
 {
-    //
+    public function test(){
+        return view('dashboard.setting.cehck');
+    }
+    public function store(Request $request){
+        return response()->json([
+            $request
+        ]);
+    }
 }
