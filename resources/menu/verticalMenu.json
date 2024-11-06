@@ -352,6 +352,11 @@
           "route": "setting.footer",
           "name": "Footer",
           "slug": "setting.footer"
+        },
+        {
+          "route": "setting.upload",
+          "name": "File Upload",
+          "slug": "setting.upload"
         }
         
       ]

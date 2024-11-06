@@ -91,6 +91,7 @@ Route::middleware('auth')->controller(SettingController::class)->name('setting.'
     Route::get('setting-before-after','beforeAfter')->name('beforeAfter');
     Route::get('setting-counter','counter')->name('counter');
     Route::get('setting-footer','footer')->name('footer');
+    Route::get('setting-upload','upload')->name('upload');
 });
 
 // Route::get('blog', function (){

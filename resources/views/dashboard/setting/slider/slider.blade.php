@@ -2,5 +2,5 @@
 @section('title', 'Slider')
 
 @section('content')
-<h2>Slider</h2>
+<x-fileuploader.upload></x-fileuploader.upload>
 @endsection
