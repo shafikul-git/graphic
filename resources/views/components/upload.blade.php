@@ -1,17 +1,20 @@
+@props([
+    'ids',
+])
 <div class="col-lg-4 col-md-6">
     <div class="mt-4">
         <!-- Modal -->
-        <div class="modal fade" id="fullscreenModal" tabindex="-1" aria-hidden="true">
+        <div class="modal fade" id="{{ $ids }}" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-fullscreen" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalFullTitle">File Upload</h5>
+                        <h5 class="modal-title" id="{{ $ids }}">File Upload</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
 
 
-                        <div id="dropZone" class="file-upload-container"
+                        <div id="{{ $ids }}" class="file-upload-container"
                             onclick="document.getElementById('fileInput').click()" ondragover="handleDragOver(event)"
                             ondragleave="handleDragLeave(event)" ondrop="handleFileDrop(event)">
                             <input type="file" id="fileInput" multiple onchange="handleFileUpload(event)"
@@ -50,13 +53,11 @@
 <script>
     const uploadedFiles = [];
 
-    // Handle file upload (Drag & Drop or manual selection)
     function handleFileUpload(event) {
         const files = event.target.files;
         processFiles(files);
     }
 
-    // Handle file drop in drag & drop area
     function handleFileDrop(event) {
         event.preventDefault();
         event.stopPropagation();
@@ -65,19 +66,16 @@
         event.currentTarget.classList.remove('dragover');
     }
 
-    // Show visual feedback for drag over
     function handleDragOver(event) {
         event.preventDefault();
         event.currentTarget.classList.add('dragover');
     }
 
-    // Remove visual feedback when drag leaves
     function handleDragLeave(event) {
         event.preventDefault();
         event.currentTarget.classList.remove('dragover');
     }
 
-    // Process files and display preview
     function processFiles(files) {
         Array.from(files).forEach(file => {
             uploadedFiles.push(file);
@@ -86,17 +84,15 @@
         });
     }
 
-    // Add image by URL
     function addImageByUrl() {
         const imageUrl = document.getElementById('imageUrlInput').value;
         if (imageUrl) {
             displayFilePreview(imageUrl, true);
             displayFileList(imageUrl);
-            document.getElementById('imageUrlInput').value = ''; // Clear input
+            document.getElementById('imageUrlInput').value = ''; 
         }
     }
 
-    // Display file preview (local files or URLs)
     function displayFilePreview(file, isUrl = false) {
         const previewContainer = document.getElementById('filePreviewContainer');
         const img = document.createElement('img');
@@ -109,7 +105,6 @@
         previewContainer.appendChild(img);
     }
 
-    // Display uploaded files list
     function displayFileList(fileName) {
         const uploadedFilesList = document.getElementById('uploadedFilesList');
         const listItem = document.createElement('li');

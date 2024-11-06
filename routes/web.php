@@ -11,7 +11,6 @@ use App\Http\Controllers\pages\MiscError;
 use App\Http\Controllers\layouts\Container;
 use App\Http\Controllers\pricingController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SettingController;
 use App\Http\Controllers\dashboard\Analytics;
 use App\Http\Controllers\FreeTrialController;
 use App\Http\Controllers\layouts\WithoutMenu;
@@ -37,10 +36,12 @@ use App\Http\Controllers\user_interface\Offcanvas;
 use App\Http\Controllers\user_interface\TabsPills;
 use App\Http\Controllers\form_elements\InputGroups;
 use App\Http\Controllers\form_layouts\VerticalForm;
+use App\Http\Controllers\setting\settingController;
 use App\Http\Controllers\user_interface\ListGroups;
 use App\Http\Controllers\user_interface\Typography;
 use App\Http\Controllers\authentications\LoginBasic;
 use App\Http\Controllers\pages\MiscUnderMaintenance;
+use App\Http\Controllers\setting\HomePageController;
 use App\Http\Controllers\form_layouts\HorizontalForm;
 use App\Http\Controllers\tables\Basic as TablesBasic;
 use App\Http\Controllers\extended_ui\PerfectScrollbar;
@@ -84,7 +85,7 @@ Route::controller(FreeTrialController::class)->name('freeTrial.')->group(functio
     });
 });
 
-Route::middleware('auth')->controller(SettingController::class)->name('setting.')->group(function (){
+Route::middleware('auth')->controller(settingController::class)->name('setting.')->group(function (){
     Route::get('setting-home','index')->name('index');
     Route::get('setting-service','service')->name('service');
     Route::get('setting-slider','slider')->name('slider');
@@ -92,6 +93,10 @@ Route::middleware('auth')->controller(SettingController::class)->name('setting.'
     Route::get('setting-counter','counter')->name('counter');
     Route::get('setting-footer','footer')->name('footer');
     Route::get('setting-upload','upload')->name('upload');
+});
+
+Route::middleware('auth')->controller(HomePageController::class)->name('homePageSetting.')->group(function (){
+    Route::post('home-page-store-data', 'store')->name('store');
 });
 
 // Route::get('blog', function (){

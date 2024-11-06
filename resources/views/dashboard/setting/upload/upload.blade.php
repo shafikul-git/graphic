@@ -11,6 +11,6 @@
 
 
 <!-- Fullscreen Modal -->
-<x-upload></x-upload>
+<x-upload ids="fullscreenModal"></x-upload>
 
 @endsection
