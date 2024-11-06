@@ -33,7 +33,9 @@
 
     @include('frontend.serviceOverView')
 
-    @include('components.serviceFAQ')
+    <h2 class="capitalize font-bold text-center mt-[6rem] text-sm md:text-xl lg:text-2xl">Our Working step</h2>
+
+    @include('components.woringStep')
 
     {{-- @include('frontend.editingProces') --}}
 
