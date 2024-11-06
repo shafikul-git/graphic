@@ -151,114 +151,114 @@
 
 @push('scripts')
     <script>
-        function updateUserModalFN(param) {
-            const editRoute = createDynamicRoute('userEdit', { id: param });
-            const updateRoute = createDynamicRoute('userUpdate', { id: param });
+        // function updateUserModalFN(param) {
+        //     const editRoute = createDynamicRoute('userEdit', { id: param });
+        //     const updateRoute = createDynamicRoute('userUpdate', { id: param });
 
-            (async () => {
-                try {
-                    const getDataResult = await getData(editRoute);
-                    console.log(getDataResult);
+        //     (async () => {
+        //         try {
+        //             const getDataResult = await getData(editRoute);
+        //             console.log(getDataResult);
 
-                    const modalBody = document.querySelector('#updateUserModal .modal-body');
-                    modalBody.innerHTML = `
-                                   <x-form id="sumitData" method="PUT" action="${updateRoute}" :fields="[
-                                        [
-                                            'inputDuel' => true,
-                                            'inputs' => [
-                                                [
-                                                    'type' => 'text',
-                                                    'name' => 'name',
-                                                    'id' => 'name',
-                                                    'placeholder' => 'Enter Name ...',
-                                                    'class' => 'form-control',
-                                                    'value' => '${getDataResult.name}',
-                                                    'label' => [
-                                                        'name' => 'Enter Name ',
-                                                        'class' => 'form-label',
-                                                    ],
-                                                ],
-                                                [
-                                                    'type' => 'select',
-                                                    'name' => 'role',
-                                                    'id' => 'role',
-                                                    'value' => '${getDataResult.role}',
-                                                    'class' => 'form-select',
-                                                    'label' => [
-                                                        'name' => 'Select Role',
-                                                        'class' => 'form-label',
-                                                    ],
-                                                    'options' => [
-                                                        'admin' => 'Admin',
-                                                        'editor' => 'Manager',
-                                                        'employee' => 'Employee',
-                                                        'user' => 'User',
-                                                    ],
-                                                ],
-                                            ],
-                                        ],
-                                        [
-                                            'type' => 'email',
-                                            'name' => 'email',
-                                            'value' => '${getDataResult.email}',
-                                            'id' => 'email',
-                                            'placeholder' => 'example@mail.com',
-                                            'class' => 'form-control',
-                                            'label' => [
-                                                'name' => 'Enter Email ',
-                                                'class' => 'form-label',
-                                            ],
-                                        ],
-                                        [
-                                            'inputDuel' => true,
-                                            'inputs' => [
-                                                [
-                                                    'type' => 'password',
-                                                    'name' => 'password',
-                                                    'id' => 'password',
-                                                    'placeholder' => '*******',
-                                                    'class' => 'form-control',
-                                                    'label' => [
-                                                        'name' => 'Enter password ',
-                                                        'class' => 'form-label',
-                                                    ],
-                                                ],
-                                                [
-                                                    'type' => 'password',
-                                                    'name' => 'password_confirmation',
-                                                    'id' => 'password_confirmation',
-                                                    'placeholder' => '*******',
-                                                    'class' => 'form-control',
-                                                    'label' => [
-                                                        'name' => 'Enter Repassword ',
-                                                        'class' => 'form-label',
-                                                    ],
-                                                ],
-                                            ],
-                                        ],
-                                    ]">
-                                        <input type="submit" value="Submit" class="btn btn-primary mt-3">
-                                    </x-form>
-                        `;
-                    // console.log('GET Data:', getDataResult);
-                } catch (error) {
-                    console.error('Error fetching data:', error);
-                }
-            })();
-            var updateUserModal = new bootstrap.Modal(document.getElementById('updateUserModal'));
-            updateUserModal.show();
+        //             const modalBody = document.querySelector('#updateUserModal .modal-body');
+        //             modalBody.innerHTML = `
+        //                            <x-form id="sumitData" method="PUT" action="${updateRoute}" :fields="[
+        //                                 [
+        //                                     'inputDuel' => true,
+        //                                     'inputs' => [
+        //                                         [
+        //                                             'type' => 'text',
+        //                                             'name' => 'name',
+        //                                             'id' => 'name',
+        //                                             'placeholder' => 'Enter Name ...',
+        //                                             'class' => 'form-control',
+        //                                             'value' => '${getDataResult.name}',
+        //                                             'label' => [
+        //                                                 'name' => 'Enter Name ',
+        //                                                 'class' => 'form-label',
+        //                                             ],
+        //                                         ],
+        //                                         [
+        //                                             'type' => 'select',
+        //                                             'name' => 'role',
+        //                                             'id' => 'role',
+        //                                             'value' => '${getDataResult.role}',
+        //                                             'class' => 'form-select',
+        //                                             'label' => [
+        //                                                 'name' => 'Select Role',
+        //                                                 'class' => 'form-label',
+        //                                             ],
+        //                                             'options' => [
+        //                                                 'admin' => 'Admin',
+        //                                                 'editor' => 'Manager',
+        //                                                 'employee' => 'Employee',
+        //                                                 'user' => 'User',
+        //                                             ],
+        //                                         ],
+        //                                     ],
+        //                                 ],
+        //                                 [
+        //                                     'type' => 'email',
+        //                                     'name' => 'email',
+        //                                     'value' => '${getDataResult.email}',
+        //                                     'id' => 'email',
+        //                                     'placeholder' => 'example@mail.com',
+        //                                     'class' => 'form-control',
+        //                                     'label' => [
+        //                                         'name' => 'Enter Email ',
+        //                                         'class' => 'form-label',
+        //                                     ],
+        //                                 ],
+        //                                 [
+        //                                     'inputDuel' => true,
+        //                                     'inputs' => [
+        //                                         [
+        //                                             'type' => 'password',
+        //                                             'name' => 'password',
+        //                                             'id' => 'password',
+        //                                             'placeholder' => '*******',
+        //                                             'class' => 'form-control',
+        //                                             'label' => [
+        //                                                 'name' => 'Enter password ',
+        //                                                 'class' => 'form-label',
+        //                                             ],
+        //                                         ],
+        //                                         [
+        //                                             'type' => 'password',
+        //                                             'name' => 'password_confirmation',
+        //                                             'id' => 'password_confirmation',
+        //                                             'placeholder' => '*******',
+        //                                             'class' => 'form-control',
+        //                                             'label' => [
+        //                                                 'name' => 'Enter Repassword ',
+        //                                                 'class' => 'form-label',
+        //                                             ],
+        //                                         ],
+        //                                     ],
+        //                                 ],
+        //                             ]">
+        //                                 <input type="submit" value="Submit" class="btn btn-primary mt-3">
+        //                             </x-form>
+        //                 `;
+        //             // console.log('GET Data:', getDataResult);
+        //         } catch (error) {
+        //             console.error('Error fetching data:', error);
+        //         }
+        //     })();
+        //     var updateUserModal = new bootstrap.Modal(document.getElementById('updateUserModal'));
+        //     updateUserModal.show();
 
-        }
-        document.addEventListener('DOMContentLoaded', function() {
-            var modalElement = document.getElementById('updateUserModal');
+        // }
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     var modalElement = document.getElementById('updateUserModal');
 
-            modalElement.addEventListener('hidden.bs.modal', function() {
-                var modalBackdrop = document.querySelector('.modal-backdrop');
-                if (modalBackdrop) {
-                    modalBackdrop.remove();
-                }
-            });
-        });
+        //     modalElement.addEventListener('hidden.bs.modal', function() {
+        //         var modalBackdrop = document.querySelector('.modal-backdrop');
+        //         if (modalBackdrop) {
+        //             modalBackdrop.remove();
+        //         }
+        //     });
+        // });
 
 
         // POST request

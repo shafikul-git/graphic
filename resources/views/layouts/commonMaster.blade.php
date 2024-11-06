@@ -33,7 +33,7 @@
     @include('layouts/sections/scriptsIncludes')
 
      <!-- Include Global Axios -->
-     @vite(['resources/js/custom.js'])
+     @vite(['resources/js/custom.js', 'resources/css/admin.css'])
 
 </head>
 

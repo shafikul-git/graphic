@@ -77,7 +77,6 @@ Route::controller(FreeTrialController::class)->name('freeTrial.')->group(functio
 
     Route::middleware('auth')->group(function (){
         Route::get('sample', 'sample')->name('sample');
-        Route::get('all-sample', 'allSample')->name('allSample');
     });
 });
 

@@ -15,17 +15,23 @@ class FreeTrialController extends Controller
         return view("frontend.freetrial");
     }
 
-    public function sample(){
-        return view('dashboard.freeTrial');
+    public function sample(Request $request){
+        $search = $request->input('search');
+        $option = $request->input('option');
+
+        $query = FreeTrial::query();
+       if($search && $option){
+        $query->where($option, 'LIKE', '%' . $search . '%' );
+       } elseif ($search){
+        $query->where(['name', 'email'], 'LIKE', '%' . $search . '%' );
+       }
+
+        $allSample = $query->get();
+        // return $allSample;
+        $allSample = $query->orderByDesc('id')->paginate(3)->appends(request()->query());
+        return view('dashboard.freeTrial', compact('allSample'));
     }
-    public function allSample(){
-        $allSample = FreeTrial::orderByDesc('id')->paginate(10);
-        $allSample->transform(function($item){
-            $item->instruction = strip_tags($item->instruction);
-            return $item;
-        });
-        return response()->json($allSample);
-    }
+
     public function store(Request $request)
     {
         $getDate = new \DateTime("now", new DateTimeZone("Asia/Dhaka"));

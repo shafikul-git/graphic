@@ -43,6 +43,7 @@ export default defineConfig({
             input: [
                 "resources/css/app.css",
                 "resources/css/slider.css",
+                "resources/css/admin.css",
                 "resources/js/app.js",
                 "resources/js/custom.js",
                 "resources/js/slider.js",

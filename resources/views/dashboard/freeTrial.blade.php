@@ -2,86 +2,83 @@
 @section('title', 'Sample')
 
 @section('content')
-    <table class="table align-middle mb-0 bg-white">
-        <thead class="bg-light">
-            <tr>
-                <th>Details</th>
-                <th>Sample Details</th>
-                <th>Date</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody id="allSample">
-            <!-- all sample -->
-        </tbody>
-    </table>
-@endsection
+    <div class="container-xl">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
 
-@include('components.createDynamicRoute')
-<script>
-    const url = createDynamicRoute('freeTrialSample');
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const allSample = document.querySelector('#allSample');
-
-        (async () => {
-            try {
-                const getDataResult = await getData(url);
-                console.log(getDataResult);
-                getDataResult.data.forEach(allData => {
-
-                    allSample.innerHTML += `
-                     <tr>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt=""
-                                    style="width: 45px; height: 45px" class="rounded-circle" />
-                                <div class="ms-3">
-                                    <p class="fw-bold mb-1">${allData.name}</p>
-                                    <p class="text-muted mb-0">${allData.email}</p>
+                        <div class="col-sm-6">
+                            <form action="" method="get">
+                                <div class="d-flex align-items-center">
+                                    <div class="input-group">
+                                        <input type="search" name="search" value="{{ request()->query('search') }}" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                        <button type="submit" class="btn btn-outline-primary">Search</button>
+                                    </div>
+                                    <select name="option" class="form-select ms-2" aria-label="Default select example" style="width: 200px;">
+                                        <option value="" {{ request()->query('option') == '' ? 'selected' : '' }}>Select</option>
+                                        <option value="email" {{ request()->query('option') == 'email' ? 'selected' : '' }}>Email</option>
+                                        <option value="country" {{ request()->query('option') == 'country' ? 'selected' : '' }}>Country</option>
+                                        <option value="category" {{ request()->query('option') == 'category' ? 'selected' : '' }}>Category</option>
+                                 </select>
                                 </div>
-                            </div>
-                        </td>
-                        <td>
-                            <p class="fw-bold mb-1">${allData.category}</p>
-                           <p class="text-muted mb-0 w-20 ">${truncateInstruction(allData.instruction)}</p>
-                        </td>
-                        <td>
-                            <span class="">${formatCreatedAt(allData.created_at)}</span>
-                        </td>
-                        <td class="">
-                             <div class="d-flex gap-4 justify-content-center align-items-center">
-                                <i class="fa-regular fa-eye" title="Preview"></i>
-                                <i class="fa-solid fa-download" title="Download File"></i>
-                                <i class="fa-solid fa-paper-plane" title="Send File"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    `
-                });
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th class="text-capitalize">Name <i class="fa fa-sort"></i></th>
+                            <th class="text-capitalize">email <i class="fa fa-sort"></i></th>
+                            <th class="text-capitalize">country <i class="fa fa-sort"></i></th>
+                            <th class="text-capitalize">category <i class="fa fa-sort"></i></th>
+                            <th class="text-capitalize">instruction <i class="fa fa-sort"></i></th>
+                            <th class="text-capitalize">added date <i class="fa fa-sort"></i></th>
+                            <th class="text-capitalize">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($allSample as $key => $value)
+                            <tr>
+                                <td class="text-elips">{{ $key + 1 }}</td>
+                                <td class="text-elips">{{ $value->name }}</td>
+                                <td class="text-elips">{{ $value->email }}</td>
+                                <td class="text-elips">{{ $value->country }}</td>
+                                <td class="text-elips">{{ $value->category }}</td>
+                                <td class="text-elips">{{ $value->instruction }}</td>
+                                <td class="text-elips">{{ Carbon\Carbon::parse($value->created_at)->diffForHumans() }}</td>
+                                <td class="">
+                                    <div class="d-flex align-self-center gap-3">
+                                        <button type="button" class="edit border-0 p-0" style="background: no-repeat;"
+                                            title="Preview" data-toggle="tooltip" data-bs-toggle="modal"
+                                            data-bs-target="#updateUserModal"
+                                            onclick="updateUserModalFN({{ $value->id }})">
+                                            <i class="fa-regular  fa-eye"></i>
+                                        </button>
+                                        <a href="#" class="delete" title="Delete" data-toggle="tooltip">
+                                            <i class="material-icons text-danger">&#xE872;</i>
+                                        </a>
+                                        <a href="#">
+                                            <i class='bx bxl-telegram'></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
 
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        })();
+                    </tbody>
+                </table>
 
-        function formatCreatedAt(dateTime) {
-            const date = new Date(dateTime);
-            const now = new Date();
-            const seconds = Math.floor((now - date) / 1000);
-
-            if (seconds < 60) return `${seconds}s ago`;
-            if (seconds < 3600) return `${Math.floor(seconds / 60)}m ago`;
-            if (seconds < 86400) return `${Math.floor(seconds / 3600)}h ago`;
-            return `${Math.floor(seconds / 86400)}d ago`;
-        }
-
-        function truncateInstruction(instruction) {
-            const words = instruction.split(' ');
-            if (words.length > 4) {
-                return words.slice(0, 4).join(' ') + '...';
-            }
-            return instruction;
-        }
-    });
+            </div>
+        </div>
+        {{ $allSample->links('pagination::bootstrap-5') }}
+    </div>
+@endsection
+<script>
+    console.log(@json($allSample));
 </script>
+<style>
+
+</style>
