@@ -16,16 +16,17 @@ class FreeTrialController extends Controller
         return view("frontend.freetrial");
     }
 
-    public function sample(Request $request){
+    public function sample(Request $request)
+    {
         $search = $request->input('search');
         $option = $request->input('option');
 
         $query = FreeTrial::query();
-       if($search && $option){
-        $query->where($option, 'LIKE', '%' . $search . '%' );
-       } elseif ($search){
-        $query->where(['name', 'email'], 'LIKE', '%' . $search . '%' );
-       }
+        if ($search && $option) {
+            $query->where($option, 'LIKE', '%' . $search . '%');
+        } elseif ($search) {
+            $query->where(['name', 'email'], 'LIKE', '%' . $search . '%');
+        }
 
         $allSample = $query->orderByDesc('id')->paginate(3)->appends(request()->query());
         return view('dashboard.freeTrial', compact('allSample'));
@@ -43,20 +44,14 @@ class FreeTrialController extends Controller
             "country" => "required|string|not_regex:/<[^>]*>/",
             "instruction" => "required|string|not_regex:/<[^>]*>/",
             'fileLink' => 'nullable|string|required_without:files',
-            "files" => "array|required_without:fileLink",
-            "files.*" => "file|mimes:jpeg,png,jpg,gif,webp|max:30720",
+            'files' => 'array|required_without:fileLink',
+            "files.*" => "required|file|mimes:jpeg,png,jpg,gif,webp|max:307200",
         ]);
 
         $storeFileNam  = [];
-        foreach ($request->file('files') as $index => $file) {
-            Log::info("File $index: ", [
-                'original_name' => $file->getClientOriginalName(),
-                'size' => $file->getSize(),
-                'mime_type' => $file->getMimeType()
-            ]);
-        };
+
         if ($request->hasFile("files")) {
-            foreach ($request->file('files') as $file) {
+            foreach ($request->file('files') as $index => $file) {
                 $fileName = $file->getClientOriginalName();
                 $path = $file->storePubliclyAs("FreeTrial", uniqid() . '____' . $currentDate .  '____' . $fileName, "public");
                 array_push($storeFileNam, $path);
@@ -73,7 +68,7 @@ class FreeTrialController extends Controller
             'files' => $storeFileNam,
         ]);
 
-        if($sampleAdd){
+        if ($sampleAdd) {
             return redirect()->back()->with('success', 'Sample Added');
         }
         return redirect()->back()->with('error', 'Someting Went Wrong');
@@ -85,9 +80,7 @@ class FreeTrialController extends Controller
     }
     public function singleData($id)
     {
-       $data  = FreeTrial::find($id);
-       return response()->json($data);
+        $data  = FreeTrial::find($id);
+        return response()->json($data);
     }
-
-    
 }

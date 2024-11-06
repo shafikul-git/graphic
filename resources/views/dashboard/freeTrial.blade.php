@@ -24,11 +24,17 @@
                             <select name="option" class="form-select ms-2 mt-2 mt-md-0 form-select-sm form-select-md"
                                 aria-label="Default select example" style="width: 200px;">
                                 <option value="" {{ request()->query('option') == '' ? 'selected' : '' }}>
-                                    Select</option>
-                                <option value="email" {{ request()->query('option') == 'email' ? 'selected' : '' }}>Email
+                                    Select
+                                </option>
+                                <option value="name" {{ request()->query('option') == 'name' ? 'selected' : '' }}>
+                                    Name
+                                </option>
+                                <option value="email" {{ request()->query('option') == 'email' ? 'selected' : '' }}>
+                                    Email
                                 </option>
                                 <option value="country" {{ request()->query('option') == 'country' ? 'selected' : '' }}>
-                                    Country</option>
+                                    Country
+                                </option>
                                 <option value="category" {{ request()->query('option') == 'category' ? 'selected' : '' }}>
                                     Category
                                 </option>
@@ -114,7 +120,7 @@
 <script>
     const filePath = @json(url('storage/'));
     console.log(filePath);
-    
+
     function previewSample(param) {
         const url = createDynamicRoute('singleData', {
             id: param
@@ -170,7 +176,7 @@
                     const fileUrl = `${filePath}/${file}`;
                     const fileExtension = file.split('.').pop().toLowerCase();
                     const isImage = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'].includes(
-                    fileExtension);
+                        fileExtension);
 
                     let fileHTML;
                     if (isImage) {
