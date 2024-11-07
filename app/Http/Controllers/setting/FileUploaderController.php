@@ -4,12 +4,15 @@ namespace App\Http\Controllers\setting;
 
 use DateTimeZone;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 
 class FileUploaderController extends Controller
 {
-    public function test(){
-        return view('dashboard.setting.cehck');
+    public function index(){
+        return response()->json([
+            'testf' => 'ok'
+        ]);
     }
     public function store(Request $request)
     {
@@ -32,6 +35,8 @@ class FileUploaderController extends Controller
                 $storeFileNam[] = $path;
             }
 
+            
+            Log::info('info', $storeFileNam);
             return response()->json(['success' => 'Files uploaded successfully', 'paths' => $storeFileNam]);
         }
 

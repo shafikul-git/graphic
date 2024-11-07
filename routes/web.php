@@ -101,10 +101,12 @@ Route::middleware('auth')->controller(HomePageController::class)->name('homePage
 });
 
 
+Route::middleware('auth')->controller(FileUploaderController::class)->group(function (){
+    Route::get('all-files', 'index')->name('allFiles');
+    Route::post('store-file', 'store')->name('storeFiles');
+});
 
 
-Route::get('test', [FileUploaderController::class, 'test']);
-Route::post('test', [FileUploaderController::class, 'store'])->name('test');
 // Route::get('blog', function (){
 //     return view('frontend.blog');
 // })->name('blog');

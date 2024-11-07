@@ -50,6 +50,7 @@
 
     <!-- Custom -->
     <script src="https://kit.fontawesome.com/ed5a9b6893.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
   <!-- Push Code Bottom -->
     @stack('scripts')
