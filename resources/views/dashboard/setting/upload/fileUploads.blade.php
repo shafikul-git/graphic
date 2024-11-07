@@ -1,12 +1,22 @@
-@props(['ids'])
+@section('title', 'File Upload')
+@extends('layouts.contentNavbarLayout')
+@section('content')
+    
+<div class="container text-center mt-5">
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fullscreenModal">
+        Open File Uploader
+    </button>
+</div>
+
+<!-- Fullscreen Modal -->
 <div class="col-lg-4 col-md-6">
     <div class="mt-4">
         <!-- Modal -->
-        <div class="modal fade" id="{{ $ids }}" tabindex="-1" aria-hidden="true">
+        <div class="modal fade" id="fullscreenModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-fullscreen" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title text-center" id="{{ $ids }}">File Upload</h5>
+                        <h5 class="modal-title text-center" id="fullscreenModal">File Upload</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -56,3 +66,6 @@
         alreadyUploadedFile.style.display = 'none';
     }
 </script>
+
+@endsection
+ 

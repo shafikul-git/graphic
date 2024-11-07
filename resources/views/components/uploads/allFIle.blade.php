@@ -27,7 +27,7 @@
             method: 'GET',
             success: function(response) {
                 const uploadedFilesContainer = document.getElementById('uploadedFilesContainer');
-                console.log(response);
+                // console.log(response);
                 response.data.forEach(element => {
                     uploadedFilesContainer.innerHTML += `
                     <div class="col-sm-6 col-md-4 col-lg-3 item m-1">

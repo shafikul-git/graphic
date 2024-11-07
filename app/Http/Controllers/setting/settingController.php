@@ -28,6 +28,6 @@ class settingController extends Controller
         return view("dashboard.setting.footer.footer");
     }
     public function upload(){
-        return view("dashboard.setting.upload.upload");
+        return view("dashboard.setting.upload.fileuploads");
     }
 }

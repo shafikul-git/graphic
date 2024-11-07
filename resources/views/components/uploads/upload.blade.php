@@ -6,6 +6,13 @@
         aria-valuemax="100"></div>
 </div>
 
+<div class="container">
+    <div class="row photos" id="currentUploadFiles">
+        <!-- All Files -->
+    </div>
+</div>
+
+
 <div class="uploadStatus"></div>
 
 
@@ -17,7 +24,7 @@
 <script type="text/javascript">
     const uploadStatus = document.querySelector('.uploadStatus');
     var dropzone = new Dropzone("#file-dropzone", {
-        parallelUploads: 2,
+        parallelUploads: 1,
         uploadMultiple: true,
         addRemoveLinks: true,
         init: function() {
@@ -35,6 +42,16 @@
             });
 
             this.on("success", function(file, response) {
+                // console.log(response);
+                
+                response.paths.forEach(element => {
+                    currentUploadFiles.insertAdjacentHTML('beforeend', `
+                        <div class="col-sm-6 col-md-4 col-lg-3 item m-1">
+                            <img class="img-fluid" src="storage/${element}">
+                        </div> 
+                    `);
+                });
+
                 uploadStatus.innerHTML = `<x-Balert success="FIle Upload Successful"></x-Balert>`;
             });
 
