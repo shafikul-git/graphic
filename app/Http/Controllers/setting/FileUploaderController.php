@@ -18,10 +18,8 @@ class FileUploaderController extends Controller
         $storeFileNam = [];
 
         if ($request->hasFile('file')) {
-            // Handle single or multiple file uploads
             $files = $request->file('file');
 
-            // If multiple files, loop through them
             if (is_array($files)) {
                 foreach ($files as $file) {
                     $changeName = $currentDate . '_' . $file->getClientOriginalName();
@@ -29,7 +27,6 @@ class FileUploaderController extends Controller
                     $storeFileNam[] = $path;
                 }
             } else {
-                // For single file upload
                 $changeName = $currentDate . '.' . $files->getClientOriginalExtension();
                 $path = $files->move(public_path('uploads'), $changeName);
                 $storeFileNam[] = $path;

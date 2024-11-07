@@ -26,7 +26,7 @@
 
 <script type="text/javascript">
     var dropzone = new Dropzone("#file-dropzone", {
-    parallelUploads: 10,
+    parallelUploads: 2,
     uploadMultiple: true,
     addRemoveLinks: true,
     init: function() {
