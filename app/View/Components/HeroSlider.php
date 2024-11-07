@@ -15,7 +15,25 @@ class HeroSlider extends Component
      */
     public function __construct()
     {
-        $this->slides = FrontendHeroSlider::all();
+        $this->slides = [
+            [
+                "description" => '',
+                "image" => '',
+                "title" => '',
+            ],
+             [
+                "description" => '',
+                "image" => '',
+                "title" => '',
+            ],
+             [
+                "description" => '',
+                "image" => '',
+                "title" => '',
+            ],
+            
+        ];
+        // $this->slides = FrontendHeroSlider::all();
     }
 
     /**

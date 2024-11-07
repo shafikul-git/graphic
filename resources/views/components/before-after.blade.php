@@ -30,11 +30,11 @@
     <img-comparison-slider
         class=" {{ $ariaClass ? $ariaClass : 'focus:border-none rounded-md shadow-lg shadow-indigo-400 outline-none hover:shadow-sm hover:shadow-gray-600 transition-all duration-500' }} ">
         <figure slot="first" class="before">
-            <img slot="first" src="{{ $images->first_image }}" loding="lazy" />
+            <img slot="first" src="{{ $images->first_image ?? url('frontend/image/Jewelry/1/after.png') }}" loding="lazy" />
             <figcaption>Before</figcaption>
         </figure>
         <figure slot="second" class="after">
-            <img slot="second" src="{{ $images->second_image }}" loding="lazy" />
+            <img slot="second" src="{{ $images->second_image ?? url('frontend/image/Jewelry/1/before.png')  }}" loding="lazy" />
             <figcaption>After</figcaption>
         </figure>
     </img-comparison-slider>
