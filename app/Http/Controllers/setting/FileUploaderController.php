@@ -13,7 +13,7 @@ class FileUploaderController extends Controller
 {
     public function index()
     {
-        $allFiles = FileUpload::orderByDesc('id')->cursorPaginate(20);
+        $allFiles = FileUpload::orderByDesc('id')->cursorPaginate(4);
         return response()->json($allFiles);
     }
 
