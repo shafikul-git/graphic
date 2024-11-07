@@ -30,7 +30,7 @@
 
                         <!-- Already Uploaded Files -->
                         <div id="alreadyUploadFiles">
-                            <x-uploads.allFile />
+                            <x-uploads.all-files />
                         </div>
 
                     </div>

@@ -8,7 +8,7 @@
         </button>
     </div>
 
-    <x-uploads.uploadModal ids="fullscreenModal" />
+    <x-uploads.fileUploadModal ids="fullscreenModal" />
 
 
 @endsection
