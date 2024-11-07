@@ -40,10 +40,10 @@
                                     <h2 class="text-center text-capitalize">All FIles</h2>
                                 </div>
                                 <div class="row photos" id="uploadedFilesContainer">
-                                    {{-- <div class="col-sm-6 col-md-4 col-lg-3 item">
-                                        <img class="img-fluid"
-                                            src="https://github.com/shafikul-git/graphic/blob/f8f0398ebb2298d91be81248ee9ae08d111a6ac5/public/frontend/2.jpeg?raw=true">
-                                    </div> --}}
+                                    
+                                </div>
+                                <div class="text-center my-3">
+                                    <button id="loadFile" onclick="allFiles()" class="text-capitalize btn btn-primary ">load file</button>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,15 @@
                 success: function(response) {
                     const uploadedFilesContainer = document.getElementById('uploadedFilesContainer');
                    console.log(response);
-                   
+                   uploadedFilesContainer.innerHTML = '';
+                   response.data.forEach(element => {
+                    uploadedFilesContainer.innerHTML += `
+                        <div class="col-sm-6 col-md-4 col-lg-3 item m-1">
+                            <img class="img-fluid"
+                                src="storage/${element.file_name}">
+                        </div> 
+                    `;
+                   }); 
                 },
                 error: function(error) {
                     console.error('Error fetching files:', error);
