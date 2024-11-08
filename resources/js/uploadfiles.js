@@ -74,7 +74,9 @@ document.addEventListener("DOMContentLoaded", function () {
             imageElement.style.margin = "4px";
             selectImage = imageElement;
         }
-        document.getElementById(inputId).value = id;
+        if (inputId) {
+            document.getElementById(inputId).value = id;
+        }
     };
 
     // Upload Files
