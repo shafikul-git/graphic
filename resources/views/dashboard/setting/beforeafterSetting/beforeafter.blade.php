@@ -3,7 +3,7 @@
 
 
 <x-uploads.fileUploadModal ids="before_imageModal" inputId="before_image" />
-{{-- <x-uploads.fileUploadModal ids="after_imageModal" inputId="after_image"/> --}}
+<x-uploads.fileUploadModal ids="after_imageModal" inputId="after_image"/>
 
 
 @section('content')

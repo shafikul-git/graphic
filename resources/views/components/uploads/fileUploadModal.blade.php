@@ -24,7 +24,7 @@
 
                         <!-- File Upload Section -->
                         <div class="container mt-5 " id="{{ $ids }}uploadFiles" style="display: none;">
-                            <x-uploads.upload />
+                            <x-uploads.upload ids="{{ $ids }}"/>
                         </div>
 
                         <!-- Already Uploaded Files -->

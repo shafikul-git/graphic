@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // const uploadFiles = document.getElementById("uploadFiles");
-    // const alreadyUploadedFile = document.getElementById("alreadyUploadFiles");
     const uploadStatus = document.getElementById("uploadStatus");
     let nextCursor = null;
     let selectImage = null;
@@ -9,7 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
     window.allFiles = function (param) {
         const attribute = param.getAttribute("click-ids");
         const uploadFiles = document.getElementById(attribute + "uploadFiles");
-        const alreadyUploadFiles = document.getElementById(attribute + "alreadyUploadFiles");
+        const alreadyUploadFiles = document.getElementById(
+            attribute + "alreadyUploadFiles",
+        );
         uploadFiles.style.display = "none";
         alreadyUploadFiles.style.display = "block";
     };
@@ -18,9 +18,12 @@ document.addEventListener("DOMContentLoaded", function () {
     window.uploadFile = function (param) {
         const attribute = param.getAttribute("click-ids");
         const uploadFiles = document.getElementById(attribute + "uploadFiles");
-        const alreadyUploadFiles = document.getElementById(attribute + "alreadyUploadFiles");
+        const alreadyUploadFiles = document.getElementById(
+            attribute + "alreadyUploadFiles",
+        );
         uploadFiles.style.display = "block";
         alreadyUploadFiles.style.display = "none";
+        dragDeopFiles(attribute);
     };
 
     // All Files Show
@@ -39,7 +42,9 @@ document.addEventListener("DOMContentLoaded", function () {
             url: url,
             method: "GET",
             success: function (response) {
-                const uploadedFilesContainer = document.getElementById(buttonID + 'AllFiles');
+                const uploadedFilesContainer = document.getElementById(
+                    buttonID + "AllFiles",
+                );
                 // console.log(response.data);
                 response.data.forEach((image) => {
                     uploadedFilesContainer.innerHTML += `
@@ -82,60 +87,60 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // Upload Files
-    var dropzone = new Dropzone("#file-dropzone", {
-        parallelUploads: 1,
-        uploadMultiple: true,
-        addRemoveLinks: true,
-        init: function () {
-            this.on("sending", function (file, xhr, formData) {
-                formData.append("_token", "{{ csrf_token() }}");
-            });
-
-            this.on("totaluploadprogress", function (progress) {
-                $("#progressBar").css("width", progress + "%");
-                $("#progressBar").attr("aria-valuenow", progress);
-            });
-
-            this.on("queuecomplete", function () {
-                $("#progressBar").css("width", "0%");
-            });
-
-            this.on("success", function (file, response) {
-                // console.log(response);
-
-                response.paths.forEach((element) => {
-                    currentUploadFiles.insertAdjacentHTML(
-                        "beforeend",
-                        `
-                        <div class="col-sm-6 col-md-4 col-lg-3 item m-1">
-                            <img class="img-fluid" src="storage/${element}">
-                        </div> 
-                        `,
-                    );
+    function dragDeopFiles(param) {
+        
+        var dropzone = new Dropzone( "#" + param + "uploading", {
+            parallelUploads: 1,
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            init: function () {
+                this.on("sending", function (file, xhr, formData) {
+                    formData.append("_token", "{{ csrf_token() }}");
                 });
 
-                document.getElementById("uploadStatus").innerHTML = `
-                    <div class="bs-toast toast fade show bg-success position-fixed top-0 end-0 m-3" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 1055;">
-                        <div class="toast-header">
-                            <i class='bx bx-bell me-2 text-black'></i>
-                            <div class="me-auto fw-medium text-black">Success</div>
-                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                        </div>
-                        <div class="toast-body text-black">
-                            File Upload Successful
-                        </div>
-                    </div>
-                `;
+                this.on("totaluploadprogress", function (progress) {
+                    $("#progressBar").css("width", progress + "%");
+                    $("#progressBar").attr("aria-valuenow", progress);
+                });
 
-                var toastEl = document.querySelector(".toast");
-                var toast = new bootstrap.Toast(toastEl);
-                toast.show();
-                // console.log(uploadStatus);
-            });
+                this.on("queuecomplete", function () {
+                    $("#progressBar").css("width", "0%");
+                });
 
-            this.on("error", function (file, response) {
-                uploadStatus.innerHTML = `<x-Balert error="FIle Upload Fail"></x-Balert>`;
-            });
-        },
-    });
+                this.on("success", function (file, response) {
+                    // console.log(response);
+                    const currentFileUploading = document.getElementById(param + "currentUploadFiles");
+                    response.paths.forEach((element) => {
+                        currentFileUploading.innerHTML += `
+                         <div class="col-sm-6 col-md-4 col-lg-3 item m-1">
+                                <img class="img-fluid" src="storage/${element}">
+                            </div> 
+                        `;
+                    });
+
+                    document.getElementById("uploadStatus").innerHTML = `
+                        <div class="bs-toast toast fade show bg-success position-fixed top-0 end-0 m-3" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 1055;">
+                            <div class="toast-header">
+                                <i class='bx bx-bell me-2 text-black'></i>
+                                <div class="me-auto fw-medium text-black">Success</div>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body text-black">
+                                File Upload Successful
+                            </div>
+                        </div>
+                    `;
+
+                    var toastEl = document.querySelector(".toast");
+                    var toast = new bootstrap.Toast(toastEl);
+                    toast.show();
+                    // console.log(uploadStatus);
+                });
+
+                this.on("error", function (file, response) {
+                    uploadStatus.innerHTML = `<x-Balert error="FIle Upload Fail"></x-Balert>`;
+                });
+            },
+        });
+    }
 });

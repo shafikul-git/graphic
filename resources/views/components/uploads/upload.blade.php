@@ -1,4 +1,5 @@
-<form action="{{ route('storeFiles') }}" class="dropzone" id="file-dropzone" enctype="multipart/form-data" method="POST">
+@props(['ids'])
+<form action="{{ route('storeFiles') }}" class="dropzone" id="{{ $ids }}uploading" enctype="multipart/form-data" method="POST">
     @csrf
 </form>
 <div class="progress mt-4">
@@ -7,7 +8,7 @@
 </div>
 
 <div class="container">
-    <div class="row photos" id="currentUploadFiles">
+    <div class="row photos" id="{{ $ids }}currentUploadFiles">
         <!-- All Files -->
     </div>
 </div>
