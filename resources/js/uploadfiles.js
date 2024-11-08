@@ -2,19 +2,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const uploadFiles = document.getElementById("uploadFiles");
     const alreadyUploadedFile = document.getElementById("alreadyUploadFiles");
     const uploadStatus = document.getElementById("uploadStatus");
+    let nextCursor = null;
+    let selectImage = null;
 
+    // Already file upload button
     window.allFiles = function () {
         uploadFiles.style.display = "none";
         alreadyUploadedFile.style.display = "block";
     };
 
+    // upload file Button
     window.uploadFile = function () {
         uploadFiles.style.display = "block";
         alreadyUploadedFile.style.display = "none";
     };
 
     // All Files Show
-    let nextCursor = null;
     window.loadFiles = function (button) {
         let url = button.getAttribute("data-route");
         // console.log(url);
@@ -53,6 +56,13 @@ document.addEventListener("DOMContentLoaded", function () {
             },
         });
     };
+
+    // image click function
+    window.selectImage = function(id, name){
+        console.log(id);
+        console.log(name);
+        
+    }
 
     // Upload Files
     var dropzone = new Dropzone("#file-dropzone", {
@@ -112,3 +122,4 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     });
 });
+

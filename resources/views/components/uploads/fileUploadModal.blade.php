@@ -43,18 +43,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    // const uploadFiles = document.getElementById('uploadFiles');
-    // const alreadyUploadedFile = document.getElementById('alreadyUploadFiles');
-
-    // function allFiles() {
-    //     uploadFiles.style.display = 'none';
-    //     alreadyUploadedFile.style.display = 'block';
-    // }
-
-    // function uploadFile() {
-    //     uploadFiles.style.display = 'block';
-    //     alreadyUploadedFile.style.display = 'none';
-    // }
-</script>

@@ -3,6 +3,7 @@
 
 
 <x-uploads.fileUploadModal ids="before_imageModal" />
+{{-- <x-uploads.fileUploadModal ids="after_imageModal" /> --}}
 
 
 @section('content')
@@ -45,7 +46,7 @@
                     <div class="mb-3">
                         <label for="after_image" class="form-label">After Image</label>
                         <input type="hidden" class="form-control" id="after_image" name="after_image" required>
-                        <button type="button" class=" form-control btn-primary">Add After Image</button>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#after_imageModal" class=" form-control btn-primary">Add After Image</button>
                     </div>
                 </div>
             </div>
