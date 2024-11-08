@@ -39,11 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     "uploadedFilesContainer",
                 );
                 // console.log(response.data);
-                response.data.forEach((element) => {
+                response.data.forEach((image) => {
                     uploadedFilesContainer.innerHTML += `
                         <div class="col-sm-6 col-md-4 col-lg-3 item m-1">
-                            <img class="img-fluid" onclick="selectImage(${element.id}, '${element.file_name}', '${buttonID}', '${inputId}')"
-                                src="storage/${element.file_name}">
+                            <img class="img-fluid" onclick="selectImage(${image.id}, '${buttonID}', '${inputId}')"
+                                src="storage/${image.file_name}">
                         </div> 
                     `;
                 });
@@ -60,24 +60,22 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // image click function
-    window.selectImage = function(id, name, buttonID , inputId){
-        console.log(id);
-        console.log(name);
-        console.log(buttonID);
-        
+    window.selectImage = function (id, buttonID, inputId) {
         if (selectImage) {
             selectImage.style.border = "";
         }
 
-        const imageElement = document.querySelector(`img[onclick="selectImage(${id}, '${name}', '${buttonID}', '${inputId}')"]`);
+        const imageElement = document.querySelector(
+            `img[onclick="selectImage(${id}, '${buttonID}', '${inputId}')"]`,
+        );
         if (imageElement) {
             imageElement.style.border = "2px solid blue";
             imageElement.style.padding = "4px";
             imageElement.style.margin = "4px";
             selectImage = imageElement;
         }
-        document.getElementById(inputId).value = name;
-    }
+        document.getElementById(inputId).value = id;
+    };
 
     // Upload Files
     var dropzone = new Dropzone("#file-dropzone", {
@@ -137,4 +135,3 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     });
 });
-
