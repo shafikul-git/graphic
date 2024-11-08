@@ -9,25 +9,28 @@ class settingController extends Controller
 {
     public function index()
     {
-        return view("dashboard.setting.home.home");
+        return view("dashboard.setting.homeSetting.home");
     }
     public function slider()
     {
-        return view("dashboard.setting.slider.slider");
+        return view("dashboard.setting.sliderSetting.slider");
     }
     public function beforeAfter()
     {
-        return view("dashboard.setting.beforeafter.beforeafter");
+        return view("dashboard.setting.beforeafterSetting.beforeafter");
     }
     public function counter()
     {
-        return view("dashboard.setting.counter.counter");
+        return view("dashboard.setting.counterSetting.counter");
     }
     public function footer()
     {
-        return view("dashboard.setting.footer.footer");
+        return view("dashboard.setting.footerSetting.footer");
     }
     public function upload(){
-        return view("dashboard.setting.upload.fileuploads");
+        return view("dashboard.setting.uploadSetting.fileuploads");
+    }
+    public function service(){
+        return view("dashboard.setting.serviceSetting.service");
     }
 }

@@ -357,8 +357,13 @@
           "route": "setting.upload",
           "name": "File Upload",
           "slug": "setting.upload"
+        },
+        {
+          "route": "setting.service",
+          "name": "Service",
+          "slug": "setting.service"
         }
-        
+
       ]
     }
   ]

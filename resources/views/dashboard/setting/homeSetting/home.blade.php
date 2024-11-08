@@ -1,7 +1,7 @@
 @extends('layouts.contentNavbarLayout')
 @section('title', 'Home')
 
-<x-upload ids="AddHomeImage"></x-upload>
+<x-uploads.fileUploadModal ids="AddHomeImage"></x-uploads.fileUploadModal>
 
 @section('content')
     <h2 class="text-center text-capitalize ">Home page Setting</h2>
@@ -246,7 +246,7 @@
             </x-form>
        </div>
 
-       
+
     </section>
 @endsection
 
@@ -277,5 +277,5 @@
         border: 2px solid;
         border-radius: 7px;
     }
-    
+
 </style>

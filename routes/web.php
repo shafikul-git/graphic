@@ -94,6 +94,7 @@ Route::middleware('auth')->controller(settingController::class)->name('setting.'
     Route::get('setting-counter','counter')->name('counter');
     Route::get('setting-footer','footer')->name('footer');
     Route::get('setting-upload','upload')->name('upload');
+    Route::get('setting-service','service')->name('service');
 });
 
 Route::middleware('auth')->controller(HomePageController::class)->name('homePageSetting.')->group(function (){
