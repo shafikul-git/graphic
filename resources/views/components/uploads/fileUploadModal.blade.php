@@ -1,4 +1,4 @@
-@props(['ids'])
+@props(['ids', 'inputId' => ''])
 <!-- Fullscreen Modal -->
 
 <!-- Modal -->
@@ -30,7 +30,7 @@
 
                         <!-- Already Uploaded Files -->
                         <div id="alreadyUploadFiles">
-                            <x-uploads.all-files />
+                            <x-uploads.all-files buttonID="{{ $ids }}" inputId="{{ $inputId }}"/>
                         </div>
 
                     </div>

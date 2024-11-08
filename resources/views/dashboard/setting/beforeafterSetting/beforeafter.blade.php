@@ -2,7 +2,7 @@
 @section('title', 'Before After')
 
 
-<x-uploads.fileUploadModal ids="before_imageModal" />
+<x-uploads.fileUploadModal ids="before_imageModal" inputId="before_image" />
 {{-- <x-uploads.fileUploadModal ids="after_imageModal" /> --}}
 
 
@@ -38,7 +38,7 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="before_image" class="form-label">Before Image</label>
-                        <input type="hidden" class="form-control" id="before_image" name="before_image" required>
+                        <input type="text" class="form-control" id="before_image" name="before_image" required>
                         <button type="button" data-bs-toggle="modal" data-bs-target="#before_imageModal" class=" form-control btn-primary" >Add Before Image</button>
                     </div>
                 </div>

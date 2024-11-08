@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // All Files Show
     window.loadFiles = function (button) {
         let url = button.getAttribute("data-route");
+        let buttonID = button.getAttribute("buttonID");
+        let inputId = button.getAttribute("inputId");
         // console.log(url);
         // let url = "{{ route('allFiles') }}";
         const loadFileButton = document.getElementById("loadFile");
@@ -40,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 response.data.forEach((element) => {
                     uploadedFilesContainer.innerHTML += `
                         <div class="col-sm-6 col-md-4 col-lg-3 item m-1">
-                            <img class="img-fluid" onclick="selectImage(${element.id}, '${element.file_name}')"
+                            <img class="img-fluid" onclick="selectImage(${element.id}, '${element.file_name}', '${buttonID}', '${inputId}')"
                                 src="storage/${element.file_name}">
                         </div> 
                     `;
@@ -58,10 +60,23 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // image click function
-    window.selectImage = function(id, name){
+    window.selectImage = function(id, name, buttonID , inputId){
         console.log(id);
         console.log(name);
+        console.log(buttonID);
         
+        if (selectImage) {
+            selectImage.style.border = "";
+        }
+
+        const imageElement = document.querySelector(`img[onclick="selectImage(${id}, '${name}', '${buttonID}', '${inputId}')"]`);
+        if (imageElement) {
+            imageElement.style.border = "2px solid blue";
+            imageElement.style.padding = "4px";
+            imageElement.style.margin = "4px";
+            selectImage = imageElement;
+        }
+        document.getElementById(inputId).value = name;
     }
 
     // Upload Files
