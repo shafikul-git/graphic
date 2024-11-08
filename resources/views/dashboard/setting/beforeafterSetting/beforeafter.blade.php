@@ -3,7 +3,7 @@
 
 
 <x-uploads.fileUploadModal ids="before_imageModal" inputId="before_image" />
-{{-- <x-uploads.fileUploadModal ids="after_imageModal" /> --}}
+<x-uploads.fileUploadModal ids="after_imageModal" inputId="after_image"/>
 
 
 @section('content')
@@ -14,7 +14,7 @@
 
     <div class="container mt-5">
         <x-form action="{{ route('about') }}" method="POST" enctype="multipart/form-data">
-         
+
             <!-- Slider Title -->
             <div class="row">
                 <div class="col-md-6">
@@ -38,15 +38,17 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="before_image" class="form-label">Before Image</label>
-                        <input type="hidden" class="form-control" id="before_image" name="before_image" required>
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#before_imageModal" class=" form-control btn-primary" >Add Before Image</button>
+                        <input type="text" class="form-control" id="before_image" name="before_image" required>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#before_imageModal"
+                            class=" form-control btn-primary">Add Before Image</button>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="after_image" class="form-label">After Image</label>
-                        <input type="hidden" class="form-control" id="after_image" name="after_image" required>
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#after_imageModal" class=" form-control btn-primary">Add After Image</button>
+                        <input type="text" class="form-control" id="after_image" name="after_image" required>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#after_imageModal"
+                            class=" form-control btn-primary">Add After Image</button>
                     </div>
                 </div>
             </div>
@@ -88,41 +90,47 @@
                 <div class="cardBeforeAfter shadow-sm">
                     <div class="row">
                         <div class="col-md-6 p-2">
-                            <img src="{{ url('frontend/image/Cliping%20path/cosmetics/after.png') }}" alt="Before Image" class="img-fluid rounded">
+                            <img src="{{ url('frontend/image/Cliping%20path/cosmetics/after.png') }}" alt="Before Image"
+                                class="img-fluid rounded">
                         </div>
                         <div class="col-md-6 p-2">
-                            <img src="{{ url('frontend/image/Cliping%20path/cosmetics/after.png') }}" alt="After Image" class="img-fluid rounded">
+                            <img src="{{ url('frontend/image/Cliping%20path/cosmetics/after.png') }}" alt="After Image"
+                                class="img-fluid rounded">
                         </div>
                     </div>
                     <div class="card-body text-center">
                         <h4 class="card-title text-primary mt-3">Lorem ipsum dolor sit</h4>
-                        <p class="card-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ut et explicabo quia magnam nostrum qui debitis deleniti odit ea!</p>
+                        <p class="card-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
+                            ut et explicabo quia magnam nostrum qui debitis deleniti odit ea!</p>
                     </div>
                 </div>
             </div>
-           
-    </div>
-@endsection
+
+        </div>
+    @endsection
 
 
-<style>
-    .cardBeforeAfter {
-        border: 1px solid #007bff;
-        border-radius: 8px;
-        background: #ffffff;
-        padding: 1.5rem;
-        transition: transform 0.2s ease-in-out;
-        overflow: hidden;
-    }
-    .cardBeforeAfter:hover {
-        transform: translateY(-5px);
-        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
-    }
-    .card-title {
-        font-weight: 600;
-    }
-    .card-text {
-        font-size: 0.9rem;
-        line-height: 1.5;
-    }   
-</style>
+    <style>
+        .cardBeforeAfter {
+            border: 1px solid #007bff;
+            border-radius: 8px;
+            background: #ffffff;
+            padding: 1.5rem;
+            transition: transform 0.2s ease-in-out;
+            overflow: hidden;
+        }
+
+        .cardBeforeAfter:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-title {
+            font-weight: 600;
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+    </style>

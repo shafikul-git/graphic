@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let url = button.getAttribute("data-route");
         let buttonID = button.getAttribute("buttonID");
         let inputId = button.getAttribute("inputId");
-        // console.log(url);
         // let url = "{{ route('allFiles') }}";
         const loadFileButton = document.getElementById("loadFile");
 
@@ -31,13 +30,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         $.ajax({
-            // url: url,
             url: url,
             method: "GET",
             success: function (response) {
-                const uploadedFilesContainer = document.getElementById(
-                    "uploadedFilesContainer",
-                );
+                const uploadedFilesContainer = document.getElementById(buttonID + 'AllFiles');
                 // console.log(response.data);
                 response.data.forEach((image) => {
                     uploadedFilesContainer.innerHTML += `

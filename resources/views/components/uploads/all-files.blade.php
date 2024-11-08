@@ -3,7 +3,7 @@
     <div class="intro">
         <h2 class="text-center text-capitalize">All FIles</h2>
     </div>
-    <div class="row photos" id="uploadedFilesContainer">
+    <div class="row photos" id="{{ $buttonID }}AllFiles">
         <!-- All Files -->
     </div>
     <div class="text-center my-3">
