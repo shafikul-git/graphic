@@ -1,20 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const uploadFiles = document.getElementById("uploadFiles");
-    const alreadyUploadedFile = document.getElementById("alreadyUploadFiles");
+    // const uploadFiles = document.getElementById("uploadFiles");
+    // const alreadyUploadedFile = document.getElementById("alreadyUploadFiles");
     const uploadStatus = document.getElementById("uploadStatus");
     let nextCursor = null;
     let selectImage = null;
 
     // Already file upload button
-    window.allFiles = function () {
+    window.allFiles = function (param) {
+        const attribute = param.getAttribute("click-ids");
+        const uploadFiles = document.getElementById(attribute + "uploadFiles");
+        const alreadyUploadFiles = document.getElementById(attribute + "alreadyUploadFiles");
         uploadFiles.style.display = "none";
-        alreadyUploadedFile.style.display = "block";
+        alreadyUploadFiles.style.display = "block";
     };
 
     // upload file Button
-    window.uploadFile = function () {
+    window.uploadFile = function (param) {
+        const attribute = param.getAttribute("click-ids");
+        const uploadFiles = document.getElementById(attribute + "uploadFiles");
+        const alreadyUploadFiles = document.getElementById(attribute + "alreadyUploadFiles");
         uploadFiles.style.display = "block";
-        alreadyUploadedFile.style.display = "none";
+        alreadyUploadFiles.style.display = "none";
     };
 
     // All Files Show

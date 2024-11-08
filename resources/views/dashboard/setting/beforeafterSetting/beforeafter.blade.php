@@ -3,7 +3,7 @@
 
 
 <x-uploads.fileUploadModal ids="before_imageModal" inputId="before_image" />
-<x-uploads.fileUploadModal ids="after_imageModal" inputId="after_image"/>
+{{-- <x-uploads.fileUploadModal ids="after_imageModal" inputId="after_image"/> --}}
 
 
 @section('content')
@@ -15,7 +15,7 @@
     <div class="container mt-5">
         <x-form action="{{ route('about') }}" method="POST" enctype="multipart/form-data">
 
-            <!-- Slider Title -->
+            <!-- Before After Name & Title -->
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">
@@ -33,7 +33,7 @@
 
                 </div>
             </div>
-            <!-- Slider Image -->
+            <!-- Before After Image Button -->
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">
@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            <!-- Slider Description -->
+            <!-- Before After Description -->
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">

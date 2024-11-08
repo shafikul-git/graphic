@@ -1,5 +1,4 @@
 @props(['ids', 'inputId' => ''])
-<!-- Fullscreen Modal -->
 
 <!-- Modal -->
 <div class="col-lg-4 col-md-6">
@@ -14,22 +13,22 @@
                     <div class="modal-body">
                         <div class="d-flex justify-content-start text-capitalize gap-4">
                             <div class="border-bottom border-primary px-3 " style="cursor: pointer;"
-                                onclick="uploadFile()">
+                                onclick="uploadFile(this)" click-ids="{{ $ids }}">
                                 upload
                             </div>
                             <div class="border-bottom border-primary px-3 " style="cursor: pointer;"
-                                onclick="allFiles()">
+                                onclick="allFiles(this)" click-ids="{{ $ids }}">
                                 already Uploaded
                             </div>
                         </div>
 
                         <!-- File Upload Section -->
-                        <div class="container mt-5 " id="uploadFiles" style="display: none;">
+                        <div class="container mt-5 " id="{{ $ids }}uploadFiles" style="display: none;">
                             <x-uploads.upload />
                         </div>
 
                         <!-- Already Uploaded Files -->
-                        <div id="alreadyUploadFiles">
+                        <div id="{{ $ids }}alreadyUploadFiles">
                             <x-uploads.all-files buttonID="{{ $ids }}" inputId="{{ $inputId }}"/>
                         </div>
 
