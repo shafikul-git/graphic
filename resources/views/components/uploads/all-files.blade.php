@@ -6,12 +6,11 @@
         <!-- All Files -->
     </div>
     <div class="text-center my-3">
-        <button id="loadFile" onclick="loadFiles()" class="text-capitalize btn btn-primary ">load file</button>
+        <button id="loadFile" onclick="loadFiles(this)" data-route="{{ route('allFiles') }}" class="text-capitalize btn btn-primary ">load file</button>
     </div>
 </div>
 
-
-
+{{-- 
 <script>
     let nextCursor = null;
 
@@ -48,4 +47,4 @@
             }
         });
     }
-</script>
+</script> --}}

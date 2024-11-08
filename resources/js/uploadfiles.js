@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const alreadyUploadedFile = document.getElementById("alreadyUploadFiles");
     const uploadStatus = document.getElementById("uploadStatus");
 
-
     window.allFiles = function () {
         uploadFiles.style.display = "none";
         alreadyUploadedFile.style.display = "block";
@@ -16,11 +15,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // All Files Show
     let nextCursor = null;
-    window.loadFiles = function () {
-        // let url = "{{ route('allFiles') }}";
+    window.loadFiles = function (button) {
+        let url = button.getAttribute("data-route");
+        // console.log(url);
         // let url = "{{ route('allFiles') }}";
         const loadFileButton = document.getElementById("loadFile");
-        const url = loadFileButton.dataset.allFilesUrl;
+
         if (nextCursor) {
             url += "?cursor=" + nextCursor;
         }
@@ -33,18 +33,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 const uploadedFilesContainer = document.getElementById(
                     "uploadedFilesContainer",
                 );
-                console.log(response.data);
+                // console.log(response.data);
                 response.data.forEach((element) => {
                     uploadedFilesContainer.innerHTML += `
-                <div class="col-sm-6 col-md-4 col-lg-3 item m-1">
-                    <img class="img-fluid" onclick="selectImage(${element.id}, '${element.file_name}')"
-                        src="storage/${element.file_name}">
-                </div> 
-            `;
+                        <div class="col-sm-6 col-md-4 col-lg-3 item m-1">
+                            <img class="img-fluid" onclick="selectImage(${element.id}, '${element.file_name}')"
+                                src="storage/${element.file_name}">
+                        </div> 
+                    `;
                 });
 
                 nextCursor = response.next_cursor;
-
                 if (!nextCursor) {
                     document.getElementById("loadFile").disabled = true;
                 }
@@ -88,7 +87,23 @@ document.addEventListener("DOMContentLoaded", function () {
                     );
                 });
 
-                uploadStatus.innerHTML = `<x-Balert success="FIle Upload Successful"></x-Balert>`;
+                document.getElementById("uploadStatus").innerHTML = `
+                    <div class="bs-toast toast fade show bg-success position-fixed top-0 end-0 m-3" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 1055;">
+                        <div class="toast-header">
+                            <i class='bx bx-bell me-2 text-black'></i>
+                            <div class="me-auto fw-medium text-black">Success</div>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body text-black">
+                            File Upload Successful
+                        </div>
+                    </div>
+                `;
+
+                var toastEl = document.querySelector(".toast");
+                var toast = new bootstrap.Toast(toastEl);
+                toast.show();
+                // console.log(uploadStatus);
             });
 
             this.on("error", function (file, response) {

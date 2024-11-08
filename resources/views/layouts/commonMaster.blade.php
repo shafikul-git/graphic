@@ -42,6 +42,7 @@
 </head>
 
 <body>
+    <div id="uploadStatus" class="position-fixed bottom-0 end-0 p-3"></div>
 
     <!-- Layout Content -->
     @yield('layoutContent')
