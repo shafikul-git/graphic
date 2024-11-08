@@ -3,27 +3,66 @@
 @section('content')
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class=" text-capitalize my-4">Create and Manage Service</h2>
-            </div>
-        </div>
+        <h2 class=" text-capitalize my-4">Manage Service Page</h2>
+
     </div>
 
     <div class="container mt-5">
         <x-form action="{{ route('about') }}" method="POST" enctype="multipart/form-data">
 
             <!-- Slider Title -->
-            <div class="mb-3">
-                <label for="sliderTitle" class="form-label">Slider Title</label>
-                <input type="text" class="form-control" id="sliderTitle" name="title" placeholder="Enter Slider Title"
-                    required>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="sliderTitle" class="form-label">Slider Title</label>
+                        <input type="text" class="form-control" id="sliderTitle" name="title"
+                            placeholder="Enter Slider Title" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="sliderTitle" class="form-label">Slider Title</label>
+                        <input type="text" class="form-control" id="sliderTitle" name="title"
+                            placeholder="Enter Slider Title" required>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Slider Image -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="sliderImage" class="form-label">Slider Image</label>
+                        <input type="hidden" class="form-control" id="sliderImage" name="image" required>
+                        <button type="button" class=" form-control btn-primary">Add Fie</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="sliderImage" class="form-label">Slider Image</label>
+                        <input type="hidden" class="form-control" id="sliderImage" name="image" required>
+                        <button type="button" class=" form-control btn-primary">Add Fie</button>
+                    </div>
+                </div>
             </div>
 
-            <!-- Slider Image -->
-            <div class="mb-3">
-                <label for="sliderImage" class="form-label">Slider Image</label>
-                <input type="file" class="form-control" id="sliderImage" name="image" required>
+            <!-- Slider Description -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="sliderTitle" class="form-label">Goto Link</label>
+                        <input type="text" class="form-control" id="sliderTitle" name="title"
+                            placeholder="Enter Slider Title" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="sliderTitle" class="form-label">GOto Title</label>
+                        <input type="text" class="form-control" id="sliderTitle" name="title"
+                            placeholder="Enter Slider Title" required>
+                    </div>
+
+                </div>
             </div>
 
             <!-- Slider Description -->
@@ -33,36 +72,74 @@
                     placeholder="Enter Slider Description" required></textarea>
             </div>
 
-            <!-- Slider Status (Active or Inactive) -->
-            <div class="mb-3">
-                <label for="sliderStatus" class="form-label">Status</label>
-                <select class="form-control" id="sliderStatus" name="status" required>
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
-                </select>
-            </div>
-
             <!-- Submit Button -->
             <div class="mb-3 text-center">
                 <button type="submit" class="btn btn-primary">Save Slider</button>
             </div>
         </x-form>
 
-        <!-- Existing Sliders Section -->
-        <div class="mt-5">
-            <h3 class="m-0">Setting slider</h3>
-            <x-form action="{{ route('setting.slider') }}" method="POST">
-                <div class="d-flex gap-4">
-                    <input type="text" name="heading" class="form-control" id="input2" placeholder="Enter Slider Key">
-                    <input type="submit" value="Submit">
+        <div class="text-center text-capitalize settingFlexDesign" style="  padding: 6px 42px;">
+            <h3 class="">First Section</h3>
+            <div class="row">
+                <div class="col-md-8">
+                    <x-form action="{{ route('setting.slider') }}" method="POST">
+                        <div class="d-flex gap-4">
+                            <input type="text" name="heading" class="form-control" id="input2"
+                                placeholder="Enter Slider Key">
+                            <input type="submit" value="Submit">
+                        </div>
+                    </x-form>
                 </div>
-            </x-form>
-            <a href="{{ route('setting.slider') }}">Goto Slider Setting</a>
+                <div class="col-md-3">
+                    <div class="text-end">
+                        <a href="{{ route('setting.slider') }}">Goto Slider Setting</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-capitalize settingFlexDesign" style="  padding: 6px 42px;">
+            <h3 class="">Second Section</h3>
+            <div class="row">
+                <div class="col-md-8">
+                    <x-form action="{{ route('setting.slider') }}" method="POST">
+                        <div class="d-flex gap-4">
+                            <input type="text" name="heading" class="form-control" id="input2"
+                                placeholder="Enter Slider Key">
+                            <input type="submit" value="Submit">
+                        </div>
+                    </x-form>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-end">
+                        <a href="{{ route('setting.slider') }}">Goto before After Setting</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-capitalize settingFlexDesign" style="  padding: 6px 42px;">
+            <h3 class="">Thred Section</h3>
+            <div class="row">
+                <div class="col-md-8">
+                    <x-form action="{{ route('setting.slider') }}" method="POST">
+                        <div class="d-flex gap-4">
+                            <input type="text" name="heading" class="form-control" id="input2"
+                                placeholder="Enter Slider Key">
+                            <input type="submit" value="Submit">
+                        </div>
+                    </x-form>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-end">
+                        <a href="{{ route('setting.slider') }}">Goto before After Setting</a>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
-    </div>
-
 
 @endsection
 
@@ -87,12 +164,13 @@
         padding: 2px 12px;
         border-radius: 7px;
     }
-    .gotoSetting{
+
+    .gotoSetting {
         padding: 0 12px;
     }
-    .gotoSetting:hover{
+
+    .gotoSetting:hover {
         border: 2px solid;
         border-radius: 7px;
     }
-
 </style>
