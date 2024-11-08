@@ -1,6 +1,10 @@
 @extends('layouts.contentNavbarLayout')
 @section('title', 'Before After')
 
+
+<x-uploads.fileUploadModal ids="before_imageModal" />
+
+
 @section('content')
     <div class="container">
         <h2 class=" text-capitalize my-4">Create and Manage Sliders</h2>
@@ -9,7 +13,7 @@
 
     <div class="container mt-5">
         <x-form action="{{ route('about') }}" method="POST" enctype="multipart/form-data">
-
+         
             <!-- Slider Title -->
             <div class="row">
                 <div class="col-md-6">
@@ -34,7 +38,7 @@
                     <div class="mb-3">
                         <label for="before_image" class="form-label">Before Image</label>
                         <input type="hidden" class="form-control" id="before_image" name="before_image" required>
-                        <button type="button" class=" form-control btn-primary">Add Before Image</button>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#before_imageModal" class=" form-control btn-primary" >Add Before Image</button>
                     </div>
                 </div>
                 <div class="col-md-6">

@@ -23,7 +23,11 @@
     <!-- Custom -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-  <!-- Push Code Head -->
+    <!-- File Upload -->
+    <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+    <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
+
+    <!-- Push Code Head -->
     @stack('heads')
 
     <!-- Include Styles -->
@@ -32,8 +36,8 @@
     <!-- Include Scripts for customizer, helper, analytics, config -->
     @include('layouts/sections/scriptsIncludes')
 
-     <!-- Include Global Axios -->
-     @vite(['resources/js/custom.js', 'resources/css/admin.css'])
+    <!-- Include Global Axios -->
+    @vite(['resources/js/custom.js', 'resources/js/uploadfiles.js', 'resources/css/admin.css'])
 
 </head>
 
@@ -52,14 +56,14 @@
     <script src="https://kit.fontawesome.com/ed5a9b6893.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-  <!-- Push Code Bottom -->
+    <!-- Push Code Bottom -->
     @stack('scripts')
 
 </body>
 
 </html>
 
-    {{-- @php
+{{-- @php
     $errorsArray = $errors->all();
 @endphp
 

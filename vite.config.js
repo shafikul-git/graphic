@@ -47,6 +47,7 @@ export default defineConfig({
                 "resources/js/app.js",
                 "resources/js/custom.js",
                 "resources/js/slider.js",
+                "resources/js/uploadfiles.js",
                 'resources/assets/css/demo.css',
                 ...pageJsFiles,
                 ...vendorJsFiles,
