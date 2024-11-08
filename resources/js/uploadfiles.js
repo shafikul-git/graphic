@@ -18,12 +18,12 @@ document.addEventListener("DOMContentLoaded", function () {
     window.uploadFile = function (param) {
         const attribute = param.getAttribute("click-ids");
         const uploadFiles = document.getElementById(attribute + "uploadFiles");
-        const alreadyUploadFiles = document.getElementById(
-            attribute + "alreadyUploadFiles",
-        );
+        const alreadyUploadFiles = document.getElementById( attribute + "alreadyUploadFiles");
         uploadFiles.style.display = "block";
         alreadyUploadFiles.style.display = "none";
-        dragDeopFiles(attribute);
+
+        const inputId = uploadFiles.getAttribute("inputId");
+        dragDropFiles(attribute, inputId);
     };
 
     // All Files Show
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // Upload Files
-    function dragDeopFiles(param) {
+    function dragDropFiles(param, inputId) {
         
         var dropzone = new Dropzone( "#" + param + "uploading", {
             parallelUploads: 1,
@@ -108,12 +108,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
                 this.on("success", function (file, response) {
-                    // console.log(response);
+                    console.log(response);
                     const currentFileUploading = document.getElementById(param + "currentUploadFiles");
-                    response.paths.forEach((element) => {
+                    response.paths.forEach((image) => {
                         currentFileUploading.innerHTML += `
                          <div class="col-sm-6 col-md-4 col-lg-3 item m-1">
-                                <img class="img-fluid" src="storage/${element}">
+                                <img class="img-fluid" src="storage/${image.file_name}"
+                                 onclick="selectImage(${image.id}, '${param}', '${inputId}')"
+                                >
                             </div> 
                         `;
                     });
@@ -134,7 +136,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     var toastEl = document.querySelector(".toast");
                     var toast = new bootstrap.Toast(toastEl);
                     toast.show();
-                    // console.log(uploadStatus);
                 });
 
                 this.on("error", function (file, response) {

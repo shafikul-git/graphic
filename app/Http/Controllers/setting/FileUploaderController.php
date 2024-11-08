@@ -27,7 +27,7 @@ class FileUploaderController extends Controller
             $files = $request->file('file');
 
             $data = [];
-            $chunkSize = 50;
+
             if (is_array($files)) {
                 foreach ($files as $file) {
                     $changeName = $currentDate . '___' . uniqid() . '___' . $file->getClientOriginalName();
@@ -41,24 +41,15 @@ class FileUploaderController extends Controller
             }
 
             foreach ($storeFileNam as $fileName) {
-                $data[] = [
+                $insertData = FileUpload::create([
                     'file_name' => $fileName,
                     'user_id' => Auth::user()->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ];
-
-                if (count($data) >= $chunkSize) {
-                    FileUpload::insert($data); 
-                    $data = [];
-                }
+                ]);
+                array_push($data, $insertData);
             }
 
-            if (!empty($data)) {
-                FileUpload::insert($data);
-            }
 
-            return response()->json(['success' => 'Files uploaded successfully', 'paths' => $storeFileNam]);
+            return response()->json(['success' => 'Files uploaded successfully', 'paths' => $data]);
         }
         Log::info('info', ['requst' => $request]);
         return response()->json(['error' => 'No files uploaded'], 400);
