@@ -52,6 +52,12 @@
     <!-- Include Scripts -->
     @include('layouts/sections/scripts')
 
+    @once
+        @if (session('success') || session('error'))
+            <x-Balert id="alertClose" onclick="alertClose()" :success="session('success')" :error="session('error')"></x-Balert>
+        @endif
+    @endonce
+
     <!-- Custom -->
     <script src="https://kit.fontawesome.com/ed5a9b6893.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

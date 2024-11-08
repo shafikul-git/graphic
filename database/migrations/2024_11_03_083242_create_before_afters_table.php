@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('before_afters', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
+            $table->string('goto_link')->nullable();
             $table->string('unique_key')->unique();
-            $table->longText('first_image');
-            $table->longText('second_image');
+            $table->foreignId('before_image')->references('id')->on('file_uploads');
+            $table->foreignId('after_image')->references('id')->on('file_uploads');
             $table->timestamps();
         });
     }

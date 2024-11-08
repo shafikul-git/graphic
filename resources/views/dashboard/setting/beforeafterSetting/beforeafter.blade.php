@@ -13,7 +13,7 @@
     </div>
 
     <div class="container mt-5">
-        <x-form action="{{ route('about') }}" method="POST" enctype="multipart/form-data">
+        <x-form action="{{ route('beforeAfter.store') }}" method="POST">
 
             <!-- Before After Name & Title -->
             <div class="row">

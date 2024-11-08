@@ -15,6 +15,7 @@ use App\Http\Controllers\dashboard\Analytics;
 use App\Http\Controllers\FreeTrialController;
 use App\Http\Controllers\layouts\WithoutMenu;
 use App\Http\Controllers\portfolioController;
+use App\Http\Controllers\BeforeAfterController;
 use App\Http\Controllers\layouts\WithoutNavbar;
 use App\Http\Controllers\ServicePageController;
 use App\Http\Controllers\user_interface\Alerts;
@@ -48,11 +49,11 @@ use App\Http\Controllers\extended_ui\PerfectScrollbar;
 use App\Http\Controllers\pages\AccountSettingsAccount;
 use App\Http\Controllers\authentications\RegisterBasic;
 use App\Http\Controllers\dashboard\users\UserController;
+use App\Http\Controllers\setting\FileUploaderController;
 use App\Http\Controllers\user_interface\TooltipsPopovers;
 use App\Http\Controllers\pages\AccountSettingsConnections;
 use App\Http\Controllers\pages\AccountSettingsNotifications;
 use App\Http\Controllers\authentications\ForgotPasswordBasic;
-use App\Http\Controllers\setting\FileUploaderController;
 use App\Http\Controllers\user_interface\PaginationBreadcrumbs;
 
 Route::get('/', function () {
@@ -107,7 +108,10 @@ Route::middleware('auth')->controller(FileUploaderController::class)->group(func
     Route::post('store-file', 'store')->name('storeFiles');
 });
 
-
+Route::middleware('auth')->controller(BeforeAfterController::class)->name('beforeAfter.')->group(function (){
+    Route::get('before-after', 'index')->name('index');
+    Route::post('before-after', 'store')->name('store');
+});
 // Route::get('blog', function (){
 //     return view('frontend.blog');
 // })->name('blog');
