@@ -1,101 +1,127 @@
 @extends('layouts.contentNavbarLayout')
 @section('title', 'Slider')
 
+<x-uploads.fileUploadModal ids="imagesModal" inputId="images" multipleSelect="true"/>
+
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h2 class=" text-capitalize my-4">Create and Manage Sliders</h2>
-            </div>
-            <div class="col-md-6 text-end">
-                <button class="btn btn-primary">Add</button>
-            </div>
-        </div>
+        <h2 class=" text-capitalize my-4">Create and Manage Sliders</h2>
+
     </div>
-    
+
     <div class="container mt-5">
-        <x-form action="{{ route('about') }}" method="POST" enctype="multipart/form-data">
-    
-            <!-- Slider Title -->
-            <div class="mb-3">
-                <label for="sliderTitle" class="form-label">Slider Title</label>
-                <input type="text" class="form-control" id="sliderTitle" name="title" placeholder="Enter Slider Title" required>
+        <x-form action="{{ route('beforeAfter.store') }}" method="POST">
+
+            <!-- Before After Name & Title -->
+            <div class="row">
+                <div class="col-md-6">
+                    <x-Binput type="text" name="name" inputID="name" labelText="Slider Name"
+                        placeholder="Enter Slider Name"></x-Binput>
+                </div>
+                <div class="col-md-6">
+                    <x-Binput type="text" name="title" inputID="title" labelText="Slider Title"
+                        placeholder="Enter Slider Title"></x-Binput>
+                </div>
             </div>
-    
-            <!-- Slider Image -->
-            <div class="mb-3">
-                <label for="sliderImage" class="form-label">Slider Image</label>
-                <input type="file" class="form-control" id="sliderImage" name="image" required>
+            <!-- Before After Description -->
+            <div class="row">
+                <div class="col-md-6">
+                    <x-Binput type="text" name="slider_key" inputID="slider_key" labelText="Slider Unique KEY"
+                        placeholder="Enter Slider Unique KEY"></x-Binput>
+                </div>
+                <div class="col-md-6">
+                    <x-Binput type="text" name="images" inputID="images" labelText="Add Image"
+                        uploadBTNText="Add Image" uploadBTNID="imagesModal"></x-Binput>
+                </div>
             </div>
-    
+
             <!-- Slider Description -->
             <div class="mb-3">
-                <label for="sliderDescription" class="form-label">Slider Description</label>
-                <textarea class="form-control" id="sliderDescription" name="description" rows="3" placeholder="Enter Slider Description" required></textarea>
+                <label for="description" class="form-label">Slider Description</label>
+                <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description"
+                    rows="3" placeholder="Enter Slider Description">{{ old('description') }}</textarea>
             </div>
-    
-            <!-- Slider Status (Active or Inactive) -->
-            <div class="mb-3">
-                <label for="sliderStatus" class="form-label">Status</label>
-                <select class="form-control" id="sliderStatus" name="status" required>
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
-                </select>
-            </div>
-    
+            @error('description')
+                <p class="text-danger">{{ $message }}</p>
+            @enderror
             <!-- Submit Button -->
             <div class="mb-3 text-center">
                 <button type="submit" class="btn btn-primary">Save Slider</button>
             </div>
         </x-form>
-    
-        <!-- Existing Sliders Section -->
-        <div class="mt-5">
-            <h3 class="text-center">Existing Sliders</h3>
-            <div class="row" id="sliderList">
-                <!-- Sliders will be displayed here -->
-            </div>
-        </div>
-    </div>
 
-    
+        <div class="row" id="AllDataSlider">
+            <h4 class="text-center" id="loading">Loading...</h4>
+            <!-- all content show -->
+        </div>
 @endsection
 
 
 <script>
-    function loadSliders() {
-        // Example slider data (replace this with actual data from your backend)
-        const sliders = [
-            { title: 'Summer Sale', description: 'Get 50% off on all items!', status: 'active', image: 'slider1.jpg' },
-            { title: 'Winter Collection', description: 'New arrivals for winter!', status: 'inactive', image: 'slider2.jpg' },
-            { title: 'Holiday Deals', description: 'Exciting offers on holiday items!', status: 'active', image: 'slider3.jpg' },
-            { title: 'Spring Collection', description: 'Fresh arrivals for the season!', status: 'inactive', image: 'slider4.jpg' },
-        ];
+    document.addEventListener("DOMContentLoaded", function() {
+        const AllDataSlider = document.getElementById('AllDataSlider');
+        const loading = document.getElementById('loading');
+        const storePath = "{{ asset('storage/') }}";
 
-        // Get the container where the sliders will be displayed
-        const sliderList = document.getElementById('sliderList');
-        sliderList.innerHTML = ''; // Clear the container before adding new sliders
+        $.ajax({
+            type: 'GET',
+            url: "{{ route('beforeAfter.getData') }}",
+            success: function(response) {
+                response.forEach(element => {
 
-        // Loop through each slider and add to the grid
-        sliders.forEach(slider => {
-            const sliderItem = document.createElement('div');
-            sliderItem.classList.add('col-sm-6', 'col-md-4', 'col-lg-3', 'mb-4');
-            sliderItem.innerHTML = `
-                <div class="card">
-                    <img src="storage/${slider.image}" class="card-img-top" alt="${slider.title}">
-                    <div class="card-body">
-                        <h5 class="card-title">${slider.title}</h5>
-                        <p class="card-text">${slider.description}</p>
-                        <span class="badge bg-${slider.status === 'active' ? 'success' : 'secondary'}">${slider.status}</span>
+                    loading.style.display = 'none';
+                    AllDataSlider.innerHTML += `
+                    <div class="col-md-4 my-3">
+                        <div class="cardBeforeAfter shadow-sm">
+                            <div class="row">
+                                <div class="col-md-6 p-2">
+                                    <img src="${storePath}/${element.after_image.file_name}"
+                                        alt="Before Image" class="img-fluid rounded">
+                                </div>
+                                <div class="col-md-6 p-2">
+                                    <img src="${storePath}/${element.before_image.file_name}"
+                                        alt="Before Image" class="img-fluid rounded">
+                                </div>
+                            </div>
+                            <div class="card-body text-center">
+                                <h4 class="card-title text-primary mt-3">${element.name}</h4>
+                                <p class="card-text text-muted">${element.description ?? ''}</p>
+                            </div>
+                            <input type="text" name="" id="" class="form-control" value="${element.unique_key}">
+                        </div>
                     </div>
-                </div>
-            `;
-            sliderList.appendChild(sliderItem);
-        });
+                  `;
+                });
+            },
+            error: function(err) {
+                console.log(err);
+
+            }
+        })
+    })
+</script>
+
+<style>
+    .cardBeforeAfter {
+        border: 1px solid #007bff;
+        border-radius: 8px;
+        background: #ffffff;
+        padding: 1.5rem;
+        transition: transform 0.2s ease-in-out;
+        overflow: hidden;
     }
 
-    // Call the loadSliders function when the page is loaded
-    window.onload = function() {
-        loadSliders();
-    };
-</script>
+    .cardBeforeAfter:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-title {
+        font-weight: 600;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+</style>

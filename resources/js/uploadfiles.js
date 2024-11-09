@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const uploadStatus = document.getElementById("uploadStatus");
     let nextCursor = null;
     let selectImage = null;
+    let selectedImages = [];
 
     // Already file upload button
     window.allFiles = function (param) {
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.uploadFile = function (param) {
         const attribute = param.getAttribute("click-ids");
         const uploadFiles = document.getElementById(attribute + "uploadFiles");
-        const alreadyUploadFiles = document.getElementById( attribute + "alreadyUploadFiles");
+        const alreadyUploadFiles = document.getElementById(attribute + "alreadyUploadFiles");
         uploadFiles.style.display = "block";
         alreadyUploadFiles.style.display = "none";
 
@@ -49,9 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 response.data.forEach((image) => {
                     uploadedFilesContainer.innerHTML += `
                         <div class="col-sm-6 col-md-4 col-lg-3 item m-1">
-                            <img class="img-fluid" onclick="selectImage(${image.id}, '${buttonID}', '${inputId}')"
+                            <img class="img-fluid" onclick="selectImage(${image.id}, '${buttonID}', '${inputId}', '${image.file_name}')"
                                 src="storage/${image.file_name}">
-                        </div> 
+                        </div>
                     `;
                 });
 
@@ -67,29 +68,32 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // image click function
-    window.selectImage = function (id, buttonID, inputId) {
-        if (selectImage) {
-            selectImage.style.border = "";
-        }
-
+    window.selectImage = function (id, buttonID, inputId, imageName) {
         const imageElement = document.querySelector(
-            `img[onclick="selectImage(${id}, '${buttonID}', '${inputId}')"]`,
+            `img[onclick="selectImage(${id}, '${buttonID}', '${inputId}', '${imageName}')"]`
         );
+
         if (imageElement) {
-            imageElement.style.border = "2px solid blue";
-            imageElement.style.padding = "4px";
-            imageElement.style.margin = "4px";
-            selectImage = imageElement;
-        }
-        if (inputId) {
-            document.getElementById(inputId).value = id;
+            if (!selectedImages.includes(imageName)) {
+                selectedImages.push(imageName);
+                imageElement.style.border = "2px solid blue";
+                imageElement.style.padding = "4px";
+                imageElement.style.margin = "4px";
+            } else {
+                selectedImages = selectedImages.filter(item => item !== imageName);
+                imageElement.style.border = "";
+                imageElement.style.padding = "";
+                imageElement.style.margin = "";
+            }
+
+            document.getElementById(inputId).value = selectedImages.join(", ");
         }
     };
 
     // Upload Files
     function dragDropFiles(param, inputId) {
-        
-        var dropzone = new Dropzone( "#" + param + "uploading", {
+
+        var dropzone = new Dropzone("#" + param + "uploading", {
             parallelUploads: 1,
             uploadMultiple: true,
             addRemoveLinks: true,
@@ -114,9 +118,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         currentFileUploading.innerHTML += `
                          <div class="col-sm-6 col-md-4 col-lg-3 item m-1">
                                 <img class="img-fluid" src="storage/${image.file_name}"
-                                 onclick="selectImage(${image.id}, '${param}', '${inputId}')"
+                                 onclick="selectImage(${image.id}, '${param}', '${inputId}', '${image.file_name}')"
                                 >
-                            </div> 
+                            </div>
                         `;
                     });
 

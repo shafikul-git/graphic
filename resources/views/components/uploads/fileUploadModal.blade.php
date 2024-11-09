@@ -1,4 +1,4 @@
-@props(['ids', 'inputId' => ''])
+@props(['ids', 'inputId' => '' , 'multipleSelect' => ''])
 
 <!-- Modal -->
 <div class="col-lg-4 col-md-6">
@@ -24,7 +24,7 @@
 
                         <!-- File Upload Section -->
                         <div class="container mt-5 " id="{{ $ids }}uploadFiles" inputId="{{ $inputId }}" style="display: none;">
-                            <x-uploads.upload ids="{{ $ids }}"/>
+                            <x-uploads.upload ids="{{ $ids }}" />
                         </div>
 
                         <!-- Already Uploaded Files -->

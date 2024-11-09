@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container">
-        <h2 class=" text-capitalize my-4">Create and Manage Sliders</h2>
+        <h2 class=" text-capitalize my-4">Create and Manage Before Afte</h2>
 
     </div>
 
@@ -29,11 +29,11 @@
             <!-- Before After Image Button -->
             <div class="row">
                 <div class="col-md-6">
-                    <x-Binput type="text" name="before_image" inputID="before_image" labelText="Before Image"
+                    <x-Binput type="hidden" name="before_image" inputID="before_image" labelText="Before Image"
                         uploadBTNText="Add Before Image" uploadBTNID="before_imageModal"></x-Binput>
                 </div>
                 <div class="col-md-6">
-                    <x-Binput type="text" name="after_image" inputID="after_image" labelText="After Image"
+                    <x-Binput type="hidden" name="after_image" inputID="after_image" labelText="After Image"
                         uploadBTNText="Add After Image" uploadBTNID="after_imageModal"></x-Binput>
                 </div>
             </div>
@@ -82,6 +82,7 @@
                 url: "{{ route('beforeAfter.getData') }}",
                 success: function(response) {
                     response.forEach(element => {
+
                         loading.style.display = 'none';
                         AllDataBeforeAfter.innerHTML += `
                         <div class="col-md-4 my-3">
@@ -98,8 +99,9 @@
                                 </div>
                                 <div class="card-body text-center">
                                     <h4 class="card-title text-primary mt-3">${element.name}</h4>
-                                    <p class="card-text text-muted">${element.description}</p>
+                                    <p class="card-text text-muted">${element.description ?? ''}</p>
                                 </div>
+                                <input type="text" name="" id="" class="form-control" value="${element.unique_key}">
                             </div>
                         </div>
                       `;
