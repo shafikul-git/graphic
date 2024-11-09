@@ -77,7 +77,7 @@
             // Copy the selected text to clipboard
             navigator.clipboard.writeText(inputElement.value).then(function() {
                 // Show the success message above the input field
-                const messageElement = document.getElementById('copyMessage');
+                const messageElement = document.getElementById(`copyMessage-${inputElement.id.split('-')[1]}`);
                 messageElement.style.display = 'block'; // Show the message
                 setTimeout(function() {
                     messageElement.style.display = 'none'; // Hide the message after 3 seconds

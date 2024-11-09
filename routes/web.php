@@ -8,6 +8,7 @@ use App\Http\Controllers\icons\Boxicons;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\cards\CardBasic;
 use App\Http\Controllers\pages\MiscError;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\layouts\Container;
 use App\Http\Controllers\pricingController;
 use App\Http\Controllers\ProfileController;
@@ -90,7 +91,7 @@ Route::controller(FreeTrialController::class)->name('freeTrial.')->group(functio
 Route::middleware('auth')->controller(settingController::class)->name('setting.')->group(function (){
     Route::get('setting-home','index')->name('index');
     Route::get('setting-service','service')->name('service');
-    Route::get('setting-slider','slider')->name('slider');
+
     Route::get('setting-counter','counter')->name('counter');
     Route::get('setting-footer','footer')->name('footer');
     Route::get('setting-upload','upload')->name('upload');
@@ -111,6 +112,12 @@ Route::middleware('auth')->controller(BeforeAfterController::class)->name('befor
     Route::get('before-after', 'index')->name('index');
     Route::get('before-after-get-data', 'getData')->name('getData');
     Route::post('before-after', 'store')->name('store');
+});
+
+Route::middleware('auth')->controller(SliderController::class)->name('slider.')->group(function(){
+    Route::get('setting-slider','index')->name('index');
+    Route::post('store-slider-data', 'store')->name('store');
+    Route::get('get-slider-data', 'getData')->name('getData');
 });
 // Route::get('blog', function (){
 //     return view('frontend.blog');

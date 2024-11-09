@@ -6,7 +6,8 @@
 
     <header class='flex border-b bg-white font-sans min-h-[70px] tracking-wide relative z-50'>
         <div class='flex flex-wrap items-center justify-between px-10 py-3 gap-4 w-full'>
-            <a href="javascript:void(0)"><img src="https://readymadeui.com/readymadeui.svg" alt="logo" class='w-36' />
+            <a href="javascript:void(0)">
+                <img src="{{ asset('static/menulogo.png') }}" alt="logo" class='w-36' />
             </a>
 
             <div id="collapseMenu"
@@ -25,7 +26,8 @@
                 <ul
                     class='lg:flex lg:gap-x-10 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50'>
                     <li class='mb-6 hidden max-lg:block'>
-                        <a href="{{ route('home') }}"><img src="https://readymadeui.com/readymadeui.svg" alt="logo"
+                        <a href="{{ route('home') }}">
+                            <img src="{{ asset('static/menulogo.png') }}" alt="logo"
                                 class='w-36' />
                         </a>
                     </li>

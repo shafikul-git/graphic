@@ -13,7 +13,7 @@ class settingController extends Controller
     }
     public function slider()
     {
-        return view("dashboard.setting.sliderSetting.slider");
+      
     }
 
     public function counter()

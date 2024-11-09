@@ -334,9 +334,9 @@
           "slug": "setting.index"
         },
         {
-          "route": "setting.slider",
+          "route": "slider.index",
           "name": "Slider",
-          "slug": "setting.slider"
+          "slug": "slider.index"
         },
         {
           "route": "beforeAfter.index",
