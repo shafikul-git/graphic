@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('goto_link')->nullable();
             $table->string('unique_key')->unique();
-            $table->foreignId('before_image')->references('id')->on('file_uploads');
-            $table->foreignId('after_image')->references('id')->on('file_uploads');
+            $table->string('before_image');
+            $table->string('after_image');
             $table->timestamps();
         });
     }

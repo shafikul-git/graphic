@@ -65,6 +65,29 @@
     <!-- Push Code Bottom -->
     @stack('scripts')
 
+
+
+
+    <script>
+        // Copy CLipboard
+        window.copyToClipboard = function(inputElement) {
+            inputElement.select();
+            inputElement.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the selected text to clipboard
+            navigator.clipboard.writeText(inputElement.value).then(function() {
+                // Show the success message above the input field
+                const messageElement = document.getElementById('copyMessage');
+                messageElement.style.display = 'block'; // Show the message
+                setTimeout(function() {
+                    messageElement.style.display = 'none'; // Hide the message after 3 seconds
+                }, 3000);
+            }).catch(function(err) {
+                console.error('Unable to copy text: ', err);
+            });
+        }
+    </script>
+
 </body>
 
 </html>

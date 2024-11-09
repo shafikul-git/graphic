@@ -27,20 +27,22 @@ class BeforeAfterController extends Controller
                     $fail('The unique key has already been taken.');
                 }
             }],
-            'before_image' => 'required|numeric',
-            'after_image' => 'required|numeric',
+            'before_image' => 'required|json',
+            'after_image' => 'required|json',
         ]);
 
-        $correctKey = preg_replace('/\s+/', '_', $request->unique_key);
+        $beforeImage = json_decode($request->before_image);
+        $afterImage = json_decode($request->after_image);
 
+        $correctKey = preg_replace('/\s+/', '_', $request->unique_key);
         $storeData = BeforeAfter::create([
             'name' => $request->name,
             'title' => $request->title,
             'description' => $request->description,
             'goto_link' => $request->goto_link,
             'unique_key' => $correctKey,
-            'before_image' => $request->before_image,
-            'after_image' => $request->after_image,
+            'before_image' => $beforeImage[0] ?? '',
+            'after_image' => $afterImage[0] ?? '',
         ]);
 
         if ($storeData) {
@@ -51,7 +53,7 @@ class BeforeAfterController extends Controller
     }
 
     public function getData(){
-        $allBeforeAfter = BeforeAfter::with(['before_image', 'after_image'])->get();
+        $allBeforeAfter = BeforeAfter::all();
         return response()->json($allBeforeAfter);
     }
 }

@@ -182,4 +182,6 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error(`Modal with ID "${id}" not found.`);
         }
     };
+
+    
 });

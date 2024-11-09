@@ -29,11 +29,11 @@
             <!-- Before After Image Button -->
             <div class="row">
                 <div class="col-md-6">
-                    <x-Binput type="text" name="before_image" inputID="before_image" labelText="Before Image"
+                    <x-Binput type="hidden" name="before_image" inputID="before_image" labelText="Before Image"
                         uploadBTNText="Add Before Image" uploadBTNID="before_imageModal"></x-Binput>
                 </div>
                 <div class="col-md-6">
-                    <x-Binput type="text" name="after_image" inputID="after_image" labelText="After Image"
+                    <x-Binput type="hidden" name="after_image" inputID="after_image" labelText="After Image"
                         uploadBTNText="Add After Image" uploadBTNID="after_imageModal"></x-Binput>
                 </div>
             </div>
@@ -81,31 +81,40 @@
                 type: 'GET',
                 url: "{{ route('beforeAfter.getData') }}",
                 success: function(response) {
-                    response.forEach(element => {
+                    // console.log(response);
+                    if (response.length <= 0) {
+                        loading.innerHTML = "Data Is Empty ..";
+                    } else {
+                        response.forEach(element => {
+                            loading.style.display = 'none';
+                            AllDataBeforeAfter.innerHTML += `
+                                <div class="col-md-4 my-3">
+                                    <div class="cardBeforeAfter shadow-sm">
+                                        <div class="row">
+                                            <div class="col-md-6 p-2">
+                                                <img src="${storePath}/${element.before_image}"
+                                                    alt="Before Image" class="img-fluid rounded">
+                                            </div>
+                                            <div class="col-md-6 p-2">
+                                                <img src="${storePath}/${element.after_image}"
+                                                    alt="Before Image" class="img-fluid rounded">
+                                            </div>
+                                        </div>
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title text-primary mt-3">${element.name}</h4>
+                                            <p class="card-text text-muted">${element.description ?? ''}</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="uniqueKeyInput">Unique Key</label>
+                                            <input type="text" id="uniqueKeyInput" class="form-control" value="${element.unique_key}" onclick="copyToClipboard(this)">
+                                            <small id="copyMessage" style="display:none; color: green;">Text successfully copied to clipboard!</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    }
 
-                        loading.style.display = 'none';
-                        AllDataBeforeAfter.innerHTML += `
-                        <div class="col-md-4 my-3">
-                            <div class="cardBeforeAfter shadow-sm">
-                                <div class="row">
-                                    <div class="col-md-6 p-2">
-                                        <img src="${storePath}/${element.after_image.file_name}"
-                                            alt="Before Image" class="img-fluid rounded">
-                                    </div>
-                                    <div class="col-md-6 p-2">
-                                        <img src="${storePath}/${element.before_image.file_name}"
-                                            alt="Before Image" class="img-fluid rounded">
-                                    </div>
-                                </div>
-                                <div class="card-body text-center">
-                                    <h4 class="card-title text-primary mt-3">${element.name}</h4>
-                                    <p class="card-text text-muted">${element.description ?? ''}</p>
-                                </div>
-                                <input type="text" name="" id="" class="form-control" value="${element.unique_key}">
-                            </div>
-                        </div>
-                      `;
-                    });
                 },
                 error: function(err) {
                     console.log(err);
