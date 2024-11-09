@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const uploadStatus = document.getElementById("uploadStatus");
     let nextCursor = null;
-    let selectImage = null;
     let selectedImages = [];
 
     // Already file upload button
@@ -19,7 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
     window.uploadFile = function (param) {
         const attribute = param.getAttribute("click-ids");
         const uploadFiles = document.getElementById(attribute + "uploadFiles");
-        const alreadyUploadFiles = document.getElementById(attribute + "alreadyUploadFiles");
+        const alreadyUploadFiles = document.getElementById(
+            attribute + "alreadyUploadFiles",
+        );
         uploadFiles.style.display = "block";
         alreadyUploadFiles.style.display = "none";
 
@@ -50,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 response.data.forEach((image) => {
                     uploadedFilesContainer.innerHTML += `
                         <div class="col-sm-6 col-md-4 col-lg-3 item m-1">
-                            <img class="img-fluid" onclick="selectImage(${image.id}, '${buttonID}', '${inputId}', '${image.file_name}')"
+                            <img class="img-fluid" onclick="selectImage(${image.id}, '${buttonID}', '${inputId}', '${image.file_name}', event)"
                                 src="storage/${image.file_name}">
                         </div>
                     `;
@@ -67,32 +68,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     };
 
-    // image click function
-    window.selectImage = function (id, buttonID, inputId, imageName) {
-        const imageElement = document.querySelector(
-            `img[onclick="selectImage(${id}, '${buttonID}', '${inputId}', '${imageName}')"]`
-        );
-
-        if (imageElement) {
-            if (!selectedImages.includes(imageName)) {
-                selectedImages.push(imageName);
-                imageElement.style.border = "2px solid blue";
-                imageElement.style.padding = "4px";
-                imageElement.style.margin = "4px";
-            } else {
-                selectedImages = selectedImages.filter(item => item !== imageName);
-                imageElement.style.border = "";
-                imageElement.style.padding = "";
-                imageElement.style.margin = "";
-            }
-
-            document.getElementById(inputId).value = selectedImages.join(", ");
-        }
-    };
-
     // Upload Files
     function dragDropFiles(param, inputId) {
-
         var dropzone = new Dropzone("#" + param + "uploading", {
             parallelUploads: 1,
             uploadMultiple: true,
@@ -113,12 +90,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 this.on("success", function (file, response) {
                     console.log(response);
-                    const currentFileUploading = document.getElementById(param + "currentUploadFiles");
+                    const currentFileUploading = document.getElementById(
+                        param + "currentUploadFiles",
+                    );
                     response.paths.forEach((image) => {
                         currentFileUploading.innerHTML += `
                          <div class="col-sm-6 col-md-4 col-lg-3 item m-1">
                                 <img class="img-fluid" src="storage/${image.file_name}"
-                                 onclick="selectImage(${image.id}, '${param}', '${inputId}', '${image.file_name}')"
+                                 onclick="selectImage(${image.id}, '${param}', '${inputId}', '${image.file_name}', event)"
                                 >
                             </div>
                         `;
@@ -148,4 +127,57 @@ document.addEventListener("DOMContentLoaded", function () {
             },
         });
     }
+
+    // image click function
+    window.selectImage = function (id, buttonID, inputId, imageName, event) {
+        const imageElement = document.querySelector(
+            `img[onclick="selectImage(${id}, '${buttonID}', '${inputId}', '${imageName}', event)"]`,
+        );
+
+        if (imageElement) {
+            if (event.ctrlKey) {
+                if (!selectedImages.includes(imageName)) {
+                    selectedImages.push(imageName);
+                    imageElement.style.border = "2px solid blue";
+                } else {
+                    selectedImages = selectedImages.filter(
+                        (item) => item !== imageName,
+                    );
+                    imageElement.style.border = "";
+                }
+            } else {
+                selectedImages = [imageName];
+                imageElement.style.border = "2px solid blue";
+
+                document
+                    .querySelectorAll(`img[onclick^="selectImage"]`)
+                    .forEach((img) => {
+                        if (img !== imageElement) {
+                            img.style.border = "";
+                        }
+                    });
+            }
+        }
+    };
+
+    window.hideModal = function (id, inputId) {
+        console.log(selectedImages);
+        console.log(id);
+        console.log(inputId);
+        const modalId = document.getElementById(id);
+        console.log(modalId);
+
+        if (modalElement) {
+            const modalInstance =
+                bootstrap.Modal.getInstance(modalElement) ||
+                new bootstrap.Modal(modalElement);
+            modalInstance.hide(); 
+        } else {
+            console.error(`Modal with ID "${id}" not found.`);
+        }
+        if (inputId) {
+            document.getElementById(inputId).value =
+                JSON.stringify(selectedImages);
+        }
+    };
 });

@@ -29,11 +29,11 @@
             <!-- Before After Image Button -->
             <div class="row">
                 <div class="col-md-6">
-                    <x-Binput type="hidden" name="before_image" inputID="before_image" labelText="Before Image"
+                    <x-Binput type="text" name="before_image" inputID="before_image" labelText="Before Image"
                         uploadBTNText="Add Before Image" uploadBTNID="before_imageModal"></x-Binput>
                 </div>
                 <div class="col-md-6">
-                    <x-Binput type="hidden" name="after_image" inputID="after_image" labelText="After Image"
+                    <x-Binput type="text" name="after_image" inputID="after_image" labelText="After Image"
                         uploadBTNText="Add After Image" uploadBTNID="after_imageModal"></x-Binput>
                 </div>
             </div>
