@@ -161,23 +161,25 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     window.hideModal = function (id, inputId) {
-        console.log(selectedImages);
-        console.log(id);
-        console.log(inputId);
-        const modalId = document.getElementById(id);
-        console.log(modalId);
+        // console.log(selectedImages);
+        // console.log(id);
+        if (inputId) {
+            if (selectedImages.length > 0) {
+                document.getElementById(inputId).value =
+                    JSON.stringify(selectedImages);
+            }
+        }
+
+        const modalElement = document.getElementById(id);
+        // console.log(modalElement.getAttribute("id"));
 
         if (modalElement) {
             const modalInstance =
                 bootstrap.Modal.getInstance(modalElement) ||
                 new bootstrap.Modal(modalElement);
-            modalInstance.hide(); 
+            modalInstance.hide();
         } else {
             console.error(`Modal with ID "${id}" not found.`);
-        }
-        if (inputId) {
-            document.getElementById(inputId).value =
-                JSON.stringify(selectedImages);
         }
     };
 });
