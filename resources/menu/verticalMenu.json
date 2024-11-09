@@ -339,9 +339,9 @@
           "slug": "setting.slider"
         },
         {
-          "route": "setting.beforeAfter",
+          "route": "beforeAfter.index",
           "name": "Before After",
-          "slug": "setting.beforeAfter"
+          "slug": "beforeAfter.index"
         },
         {
           "route": "setting.counter",

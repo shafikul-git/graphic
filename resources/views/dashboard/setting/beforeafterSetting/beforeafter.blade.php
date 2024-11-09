@@ -3,7 +3,7 @@
 
 
 <x-uploads.fileUploadModal ids="before_imageModal" inputId="before_image" />
-<x-uploads.fileUploadModal ids="after_imageModal" inputId="after_image"/>
+<x-uploads.fileUploadModal ids="after_imageModal" inputId="after_image" />
 
 
 @section('content')
@@ -18,97 +18,100 @@
             <!-- Before After Name & Title -->
             <div class="row">
                 <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="name" class="form-label text-capitalize">Before After Name</label>
-                        <input type="text" class="form-control" id="name" name="name"
-                            placeholder="Enter Before After Name" required>
-                    </div>
+                    <x-Binput type="text" name="name" inputID="name" labelText="Before After Name"
+                        placeholder="Enter Before After Name"></x-Binput>
                 </div>
                 <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="title" class="form-label"> Before After Title</label>
-                        <input type="text" class="form-control" id="title" name="title"
-                            placeholder="Enter Before After Title" required>
-                    </div>
-
+                    <x-Binput type="text" name="title" inputID="title" labelText="Before After Title"
+                        placeholder="Enter Before After Title"></x-Binput>
                 </div>
             </div>
             <!-- Before After Image Button -->
             <div class="row">
                 <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="before_image" class="form-label">Before Image</label>
-                        <input type="text" class="form-control" id="before_image" name="before_image" required>
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#before_imageModal"
-                            class=" form-control btn-primary">Add Before Image</button>
-                    </div>
+                    <x-Binput type="text" name="before_image" inputID="before_image" labelText="Before Image"
+                        uploadBTNText="Add Before Image" uploadBTNID="before_imageModal"></x-Binput>
                 </div>
                 <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="after_image" class="form-label">After Image</label>
-                        <input type="text" class="form-control" id="after_image" name="after_image" required>
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#after_imageModal"
-                            class=" form-control btn-primary">Add After Image</button>
-                    </div>
+                    <x-Binput type="text" name="after_image" inputID="after_image" labelText="After Image"
+                        uploadBTNText="Add After Image" uploadBTNID="after_imageModal"></x-Binput>
                 </div>
             </div>
 
             <!-- Before After Description -->
             <div class="row">
                 <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="unique_key" class="form-label">Before After Unique KEY</label>
-                        <input type="text" class="form-control" id="unique_key" name="unique_key"
-                            placeholder="Enter Before After Unique KEY" required>
-                    </div>
+                    <x-Binput type="text" name="unique_key" inputID="unique_key" labelText="Before After Unique KEY"
+                        placeholder="Enter Before After Unique KEY"></x-Binput>
                 </div>
                 <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="goto_link" class="form-label">Goto Link</label>
-                        <input type="text" class="form-control" id="goto_link" name="goto_link"
-                            placeholder="Enter Goto Link" required>
-                    </div>
-
+                    <x-Binput type="text" name="goto_link" inputID="goto_link" labelText="Goto Link"
+                        placeholder="Enter Goto Link"></x-Binput>
                 </div>
             </div>
 
             <!-- Slider Description -->
             <div class="mb-3">
                 <label for="description" class="form-label">Before After Description</label>
-                <textarea class="form-control" id="description" name="description" rows="3"
-                    placeholder="Enter Before After Description" required></textarea>
+                <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description"
+                    rows="3" placeholder="Enter Before After Description">{{ old('description') }}</textarea>
             </div>
-
+            @error('description')
+                <p class="text-danger">{{ $message }}</p>
+            @enderror
             <!-- Submit Button -->
             <div class="mb-3 text-center">
                 <button type="submit" class="btn btn-primary">Save Before After</button>
             </div>
         </x-form>
 
-        <div class="row">
-            <div class="col-md-4 my-3">
-                <div class="cardBeforeAfter shadow-sm">
-                    <div class="row">
-                        <div class="col-md-6 p-2">
-                            <img src="{{ url('frontend/image/Cliping%20path/cosmetics/after.png') }}" alt="Before Image"
-                                class="img-fluid rounded">
-                        </div>
-                        <div class="col-md-6 p-2">
-                            <img src="{{ url('frontend/image/Cliping%20path/cosmetics/after.png') }}" alt="After Image"
-                                class="img-fluid rounded">
-                        </div>
-                    </div>
-                    <div class="card-body text-center">
-                        <h4 class="card-title text-primary mt-3">Lorem ipsum dolor sit</h4>
-                        <p class="card-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
-                            ut et explicabo quia magnam nostrum qui debitis deleniti odit ea!</p>
-                    </div>
-                </div>
-            </div>
-
+        <div class="row" id="AllDataBeforeAfter">
+            <h4 class="text-center" id="loading">Loading...</h4>
+            <!-- all content show -->
         </div>
     @endsection
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const AllDataBeforeAfter = document.getElementById('AllDataBeforeAfter');
+            const loading = document.getElementById('loading');
+            const storePath = "{{ asset('storage/') }}";
+
+            $.ajax({
+                type: 'GET',
+                url: "{{ route('beforeAfter.getData') }}",
+                success: function(response) {
+                    response.forEach(element => {
+                        loading.style.display = 'none';
+                        AllDataBeforeAfter.innerHTML += `
+                        <div class="col-md-4 my-3">
+                            <div class="cardBeforeAfter shadow-sm">
+                                <div class="row">
+                                    <div class="col-md-6 p-2">
+                                        <img src="${storePath}/${element.after_image.file_name}"
+                                            alt="Before Image" class="img-fluid rounded">
+                                    </div>
+                                    <div class="col-md-6 p-2">
+                                        <img src="${storePath}/${element.before_image.file_name}"
+                                            alt="Before Image" class="img-fluid rounded">
+                                    </div>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h4 class="card-title text-primary mt-3">${element.name}</h4>
+                                    <p class="card-text text-muted">${element.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                      `;
+                    });
+                },
+                error: function(err) {
+                    console.log(err);
+
+                }
+            })
+        })
+    </script>
 
     <style>
         .cardBeforeAfter {

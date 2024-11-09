@@ -8,7 +8,7 @@
 
     @if ($success)
         <div class="bs-toast toast fade show bg-success position-fixed top-0 end-0 m-3" role="alert"
-            aria-live="assertive" aria-atomic="true" style="z-index: 1055;">
+            aria-live="assertive" aria-atomic="true" style="z-index: 9999;">
             <div class="toast-header">
                 <i class='bx bx-bell me-2 text-black'></i>
                 <div class="me-auto fw-medium text-black">Success</div>
@@ -39,7 +39,7 @@
 
     @if ($error)
         <div class="bs-toast toast fade show bg-danger position-fixed top-0 end-0 m-3" role="alert"
-            aria-live="assertive" aria-atomic="true" style="z-index: 1055;">
+            aria-live="assertive" aria-atomic="true" style="z-index: 9999;">
             <div class="toast-header">
                 <i class='bx bx-bell me-2 text-danger'></i>
                 <div class="me-auto fw-medium text-black">Error</div>

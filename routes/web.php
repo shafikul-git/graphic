@@ -91,7 +91,6 @@ Route::middleware('auth')->controller(settingController::class)->name('setting.'
     Route::get('setting-home','index')->name('index');
     Route::get('setting-service','service')->name('service');
     Route::get('setting-slider','slider')->name('slider');
-    Route::get('setting-before-after','beforeAfter')->name('beforeAfter');
     Route::get('setting-counter','counter')->name('counter');
     Route::get('setting-footer','footer')->name('footer');
     Route::get('setting-upload','upload')->name('upload');
@@ -110,6 +109,7 @@ Route::middleware('auth')->controller(FileUploaderController::class)->group(func
 
 Route::middleware('auth')->controller(BeforeAfterController::class)->name('beforeAfter.')->group(function (){
     Route::get('before-after', 'index')->name('index');
+    Route::get('before-after-get-data', 'getData')->name('getData');
     Route::post('before-after', 'store')->name('store');
 });
 // Route::get('blog', function (){

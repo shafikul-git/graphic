@@ -15,10 +15,7 @@ class settingController extends Controller
     {
         return view("dashboard.setting.sliderSetting.slider");
     }
-    public function beforeAfter()
-    {
-        return view("dashboard.setting.beforeafterSetting.beforeafter");
-    }
+
     public function counter()
     {
         return view("dashboard.setting.counterSetting.counter");
